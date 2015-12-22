@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Soumya D. Sanyal | articles in the "blog" category</title>
+        <meta charset="utf-8" />
+    <title>Soumya D. Sanyal | Building the dataset</title>
     <link rel="shortcut icon" type="image/png" href="http://soumyadsanyal.com/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="http://soumyadsanyal.com/favicon.ico">
     <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/screen.css" type="text/css" />
     <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/pygments.css" type="text/css" />
     <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
+
 </head>
 <body>
     <header>
         <nav>
             <ul>
-
-                <li class="ephemeral selected"><a href="http://soumyadsanyal.com/category/blog.html">blog</a></li>
                 <li><a href="http://soumyadsanyal.com/">About</a></li>
                 <li><a href="http://soumyadsanyal.com/pages/write.html">Write</a></li>
                 <li><a href="http://soumyadsanyal.com/pages/talk.html">Talk</a></li>
@@ -567,207 +566,7 @@
                     <a href="http://soumyadsanyal.com/building-the-dataset.html">posted at 19:43</a>
                     &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
                 </div>
-		<a href="http://soumyadsanyal.com/building-the-dataset.html#disqus_thread">Click to read and post comments</a>
             </article>
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/the-dataset.html" rel="bookmark" title="Permanent Link to &quot;The dataset&quot;">The dataset</a>
-                </h2>
-
-                <p>In my last post, I looked at several datasets that <a href="http://www.cms.gov/Research-Statistics-Data-and-Systems/Research-Statistics-Data-and-Systems.html">CMS</a> provides, and worried that none of them were adequate to answer the question at hand: what drives healthcare spending in the United States?</p>
-<p>What then jumpstarted my Insight project in its first week was a tip from one of the Insight NYC program directors, <a href="https://www.linkedin.com/profile/view?id=248574012">Friederike Schueuer</a>, who suggested I look into the <a href="http://meps.ahrq.gov/mepsweb/">Medical Expenditure Panel Survey</a> dataset.</p>
-<p>This turned out to be something of a jackpot. The MEPS panel dataset has been assembled (under different names) since 1996, and surveys about 35,000 people a year. It collects detailed information on (amongst other things) their demographics, household composition, employment, income, socio-economic status, insurance status, health status (including chronic conditions) and how much they were charged for healthcare over the year in four different provider settings: office-based, outpatient, inpatient, and emergency room.  </p>
-<p>What turned out to be harder about working with this dataset was the fact that the data was only provided in a flat-file format with no delimiters. It turns out that the term for such files is "fixed-width", where each record appears in its own row (terminated by the carriage return character) and the entries for each column appear within fixed columns in the dataset. For example, the record ID for each record might occupy exactly the first five characters of the record, the insurance status might be recorded using characters in columns 101-105, etc. The only problem with this was that the only place I seemed to be able to find the correspondence between variables and column numbers was in an html file on the web entirely separate from the dataset itself. For example, <a href="http://meps.ahrq.gov/mepsweb/data_stats/download_data_files_codebook.jsp?PUFId=H163">this</a> is the codebook for the 2013 dataset, and there were over 1700 variables in the dataset.</p>
-<p>In the next post, I'll detail how I went about getting a hold of the code dictionary by using a web scraper, and then rewriting the MEPS dataset into a comma separated file so I could load it into an analysis tool like (Python) pandas.</p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/the-dataset.html">posted at 12:43</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/the-dataset.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Dec 20, 2015</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/finding-data-to-use.html" rel="bookmark" title="Permanent Link to &quot;Finding data to use&quot;">Finding data to use</a>
-                </h2>
-
-                <p>In this post, I'll outline how I made decisions about the data I chose to use to build the model behind my Insight project.</p>
-<p>There were a few choices to be made, and a lot of constraints to consider. Something I came across in looking up data sources for this project was the contrast between the richness of the data currently available when it came to healthcare expenditure in the public (Medicare, Medicaid) sector, and how useful this data was for solving the problem I wanted to address. </p>
-<p>To be more specific, there is a wealth of data available from <a href="http://www.cms.gov/Research-Statistics-Data-and-Systems/Research-Statistics-Data-and-Systems.html">CMS</a> that sheds light on utilization and expenditure patterns for Medicare/Medicaid patients. However, it's hard to say to what extent patterns in this market are reflected in the private payor market - for patients with private individual plans or employer sponsored insurance. It's reasonable to be concerned that these two markets are sufficiently different in terms of market dynamics that what I can learn about cost drivers in the public payor market won't translate. </p>
-<p>One dataset that caught my attention despite these issues was the <a href="https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/index.html">Medicare Provider Utilization and Payment Data</a> set. This is a highly detailed dataset reporting information that includes: NPI (National Provider ID), provider location information (physical address), provider specialty, provider Medicare participation, HCPCS (Healthcare Common Procedure Coding System) code and description, average and standard deviation of reimbursement under Medicare (including coinsurance, deductible and any third party payments) and the average and standard deviation of the submitted charge (what the provider actually bills). Medicare reimbursement rates are commonly held to track operating costs for providers, and so the ratio of submitted charges to Medicare reimbursement for each procedure code and in each location can be used as a rough proxy for the markups over cost seen at these facilities. </p>
-<p>Amongst other things, the markup proxy may be useful as a way to estimate billed charges for consumers, if the Medicare reimbursement rates for a specific condition are already known.</p>
-<p>More interestingly, (spoiler alert) one of the conclusions I drew at the end of my Insight project was that I expect the relative market power of the provider and the payor to be a strong determinant of what a healthcare consumer is billed. (It turned out that demographic, socioeconomic and health status information were useful, but nowhere near sufficient to explain the statistical variation in billed charges.) Given the results of my project, I've come to believe that considering market power needs to be a crucial part of the discussion on managing healthcare costs and improving healthcare outcomes. </p>
-<p>This perspective is supported by a recent <a href="http://www.healthcarepricingproject.org/sites/default/files/pricing_variation_manuscript_0.pdf">paper</a> by Cooper, Craig, Gaynor and van Reenen from earlier this month showing that the primary determinant for the variation in healthcare spending for privately insured consumers is providers' transaction prices; further, hospital prices are positively associated with indicators of hospital market power. They show that even after controlling for a multitude of demand and cost factors, prices at hospitals enjoying monopoly power in a hospital referral region are 15.3% higher than in markets with four or more hospitals. </p>
-<p>Another exciting feature of this paper is their use of a novel dataset provided by the Healthcare Cost Institute (HCCI) containing claims data submitted by Aetna, Humana and United Healthcare. Why is this exciting? </p>
-<p>The Kaiser Family Foundation has compiled <a href="http://kff.org/other/state-indicator/total-population/">data</a> estimating that in 2014, Medicare covered 13% of Americans, while Medicaid covered 19% of Americans. Combined, this accounts for about a third of the U.S. population, which contrasts with 49% of Americans covered under an employer sponsored plan. While Medicare and Medicaid are likely to be the most powerful payors in the country (in terms of pricing power), private ESIs are likely to have much less pricing power relative to providers, while covering many more people. Therefore, one can imagine that understanding the private payor market will be crucial to understanding what drives healthcare expenditure in the U.S. </p>
-<p>The Cooper-Craig-Gaynor-van Reenen paper has also been <a href="http://www.nytimes.com/interactive/2015/12/15/upshot/the-best-places-for-better-cheaper-health-care-arent-what-experts-thought.html?hp&amp;action=click&amp;pgtype=Homepage&amp;clickSource=story-heading&amp;module=second-column-region&amp;region=top-news&amp;WT.nav=top-news&amp;_r=0">featured</a> in the news, which may make for better reading if you're not in the mood for an academic paper. </p>
-<p>For yet another perspective on the importance of market power in controlling healthcare costs, see Nicholas Bagley's recent <a href="http://theincidentaleconomist.com/wordpress/if-prices-are-the-problem-erisa-is-not-the-solution/">post</a> drawing attention to the obstructions strewn in the path of those seeking more and better data on the private payor market.</p>
-<p>Given all this, I'm somewhat interested to see whether the markup proxies that can be obtained from the aforementioned <a href="https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/index.html">Medicare Provider Utilization and Payment Data</a> dataset can be sensibly used (perhaps after joining with another database with a more comprehensive list of providers in various referral regions) to estimate providers' pricing power.</p>
-<p>It was unfortunately impossible to run this experiment within the short timeframe of an Insight project, but it's definitely something I'd like to investigate further in the coming months.</p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/finding-data-to-use.html">posted at 12:01</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/finding-data-to-use.html#disqus_thread">Click to read and post comments</a>
-            </article>
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/my-insight-project.html" rel="bookmark" title="Permanent Link to &quot;My Insight project&quot;">My Insight project</a>
-                </h2>
-
-                <p>In the next set of posts, I'm going to introduce my Insight project.</p>
-<p>In response to <a href="https://linkedin.com/in/jakeklamka">Jake Klamka's</a> suggestion that we try to work on something that we feel would be impactful, I gave some thought during the first week of Insight to the question of the healthcare market in the United States.</p>
-<p>This was far from being the first time that I'd had to think about this question. As an undergraduate, I remember reading a comparative analysis of healthcare expenditure in OECD countries, in which the point was made that the U.S. led the OECD in healthcare expenditure as a percentage of GDP, but was far from leading OECD countries in terms of allocation efficiency.</p>
-<p>Since the ACA was passed, I've been quite interested to read economic policy papers and blogs covering the healthcare market. One that I've found quite interesting is <a href="http://www.theincidentaleconomist.com">The Incidental Economist</a>. (This is not an endorsement of TIE bloggers' conclusions, views, or anything else.) </p>
-<p>The primary market failure I've been interested in for a while is the lack of pricing transparency in healthcare. Anyone who's tried to get an estimate or quote from a hospital for a visit, test or procedure <em>before</em> said visit, test or procedure will be acutely aware of how frustrating this exercise is. Many people have found that asking for this information almost always nets you at best an evasive answer along the lines of ''it depends on a million things, just come by and we'll send you a bill later'', or at worst an outright refusal to answer the question. The uncertainty introduced by the combination of this behavior, and the tremendous and variable markups on healthcare services make for poor allocative efficiency, I think. In plain English, it's not good business.</p>
-<p>Questions I wanted to answer, therefore, included: what drives prices in the healthcare market? Is there a way to predict ahead of time what a person can expect to be billed for healthcare services over a year? What explains the variation in billed charges for healthcare between different people and different providers? Is there a way to provide this information to consumers to enable them to make better choices when it comes to their provider, treatment or lifestyle?</p>
-<p>My initial goal for my Insight project was a bit ambitious: I wanted to build an application for consumers to explore what their billed charges for healthcare would be over the next year. A natural application of these insights would be to help consumers compare health insurance plans. </p>
-<p>Over the next few posts, I'll outline how I went about doing this.</p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/my-insight-project.html">posted at 11:01</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/my-insight-project.html#disqus_thread">Click to read and post comments</a>
-            </article>
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/introducing-insight.html" rel="bookmark" title="Permanent Link to &quot;Introducing Insight&quot;">Introducing Insight</a>
-                </h2>
-
-                <p>In September of this year, I took a leave of absence to do the <a href="http://www.insightdatascience.com">Insight Data Science</a> program in New York City. Insight is a postdoctoral program that helps Fellows to transition from academia to doing data science in industry.</p>
-<p>I can't say enough good things about the Insight program, but let me at least offer a few impressions.</p>
-<p>The minimum requirements to enter include a Ph.D., and the program tends to accept applicants who are already well prepared to be data scientists (perhaps 90-95% of the way there), and polishes them for the last mile of the transition. The program is fairly selective; we were told that for the September session, Insight received over 900 applicants, and accepted about 70 people. While this is certainly not to say that people who don't make it into Insight aren't awesome, the selectiveness does ensure a talented cohort, and my fellow Fellows (this term being a running pun throughout the program) were one of the best things about the program. </p>
-<p>Once in the program, Fellows take a week or so to decide on what they'll do for their Insight project, which is a data science project that they'll showcase to mentoring companies towards the end of the program. We're encouraged to try working on something that is do-able in a 2-3 week timeframe, but that is also impactful in some way. There is also the option to do one of a handful of consulting projects, which consist of well defined projects that real, existing startup companies need to get done, but don't have the manpower or funding to implement.</p>
-<p>We then spend the next 2-3 weeks implementing our chosen projects in 1 week iterations (affectionately called MVP's - as used in agile development and popularized by Eric Ries). Not all of our time is available for developing our projects; during this period we are visited by a lot of mentor companies that are interested in telling us about themselves, and what they do with data scientists. I think I slept an average of 4 hours a night during these weeks, and I definitely pulled a couple of all-nighters.</p>
-<p>In the final phase of the program, we pivot to demo-ing at mentor companies, as well as prepping for the interview stack that most companies have for data scientists. We've been informed that that the bar for admission to be a practicing data scientist in industry has risen recently, and that the interview loops have become more rigorous and demanding at a lot of companies. This makes a lot of sense: with <a href="http://www.thedataincubator.com">competitor programs</a> setting up shop, there's been an increase in the supply of candidates like us into the data scientist market. The rapid creation of <a href="http://www.skilledup.com/articles/list-data-science-bootcamps">other bootcamps</a> has also increased the supply of data scientists with different, including non-Ph.D., backgrounds. Finally, the emergence of many university-based data science and analytics masters programs (here's <a href="http://bit.ly/1TapxRa">one</a> example close to home that I've helped to build) promises to channel yet more talent into the marketplace.</p>
-<p>Challenge accepted.</p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/introducing-insight.html">posted at 09:20</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/introducing-insight.html#disqus_thread">Click to read and post comments</a>
-            </article>
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/introducing-this-blog.html" rel="bookmark" title="Permanent Link to &quot;Introducing this blog&quot;">Introducing this blog</a>
-                </h2>
-
-                <p>I've set up this blog in order to encourage me to write on research topics that I'm interested in, and on projects that I'm currently doing. I've found that teaching has been a great way of learning things well; this is a way to force me to explain what I'm working on in ways that are clear, detailed and relate to concrete goals. </p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/introducing-this-blog.html">posted at 06:54</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/introducing-this-blog.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Nov 28, 2015</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/hello-world.html" rel="bookmark" title="Permanent Link to &quot;Hello World!&quot;">Hello World!</a>
-                </h2>
-
-                <p>This is my first post!</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">assigns</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">theline</span><span class="p">():</span>
-        <span class="k">return</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">c</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">theline</span>
-</pre></div>
-
-
-<p>This function takes parameters <span class="math">\(m\)</span> and <span class="math">\(c\)</span> and returns a constructor for a linear function <span class="math">\(y=m*x+c\)</span>.</p>
-<p>Let's try this out:</p>
-<div class="highlight"><pre><span class="n">newline_generator</span><span class="o">=</span><span class="n">assigns</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span class="n">theline</span><span class="o">=</span><span class="n">newline_generator</span><span class="p">()</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span class="n">theline</span><span class="p">(</span><span class="mi">1100</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre>1101
-</pre></div>
-
-
-<p>That's all she wrote.</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/hello-world.html">posted at 23:44</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/hello-world.html#disqus_thread">Click to read and post comments</a>
-            </article>
-
             <div class="clear"></div>
             <footer>
                 <p>
