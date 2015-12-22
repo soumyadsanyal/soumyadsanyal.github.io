@@ -33,7 +33,7 @@
                     <a href="http://soumyadsanyal.com/building-the-dataset.html" rel="bookmark" title="Permanent Link to &quot;Building the dataset&quot;">Building the dataset</a>
                 </h2>
 
-                <p>The next step in giving my project legs was to actually get data into my analysis stack (in this case, I planned on using a pandas/scikit-learn/statsmodels stack).</p>
+                <p>The next step in giving my project legs was to actually get data into my analysis stack. For this project, I planned on using a pandas/scikit-learn/statsmodels stack.</p>
 <p>To this end, I needed to get a hold of the code dictionary available on <a href="http://meps.ahrq.gov/mepsweb/data_stats/download_data_files_codebook.jsp?PUFId=H163">this</a> webpage, and use it to rewrite the 2013 MEPS dataset as a comma separated values file. </p>
 <p>The first thing to do is to instantiate a scraper using the BeautifulSoup and requests libraries.</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
@@ -41,7 +41,7 @@
 </pre></div>
 
 
-<p>The next thing I want to do is to write a helper function that returns the urls of the code dictionary that I'm looking for. I initially thought I might be working with multiple datasets, so the following function hardcodes several of these urls into a dictionary:</p>
+<p>The next thing I want to do is to write a helper function that returns the urls of the code dictionary that I'm looking for. I initially thought I might be working with multiple datasets, so the following function hardcodes several of these urls as the values of a dictionary:</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">theurl</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
  <span class="n">answer</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;2012&quot;</span><span class="p">:</span><span class="s">&quot;http://meps.ahrq.gov/mepsweb/data_stats/download_data_files_codebook.jsp?PUFId=H155&quot;</span><span class="p">,</span> 
     <span class="s">&quot;2013&quot;</span><span class="p">:</span><span class="s">&quot;http://meps.ahrq.gov/mepsweb/data_stats/download_data_files_codebook.jsp?PUFId=H163&quot;</span><span class="p">,</span> 
