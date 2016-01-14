@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-    <title>Soumya D. Sanyal | Looking at the dataset - cleaning and predicted variables</title>
+    <title>Soumya D. Sanyal | Looking at the dataset - yet more cleaning, looking at the predicted variables</title>
     <link rel="shortcut icon" type="image/png" href="http://soumyadsanyal.com/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="http://soumyadsanyal.com/favicon.ico">
 
@@ -231,7 +231,7 @@ jQuery(document).ready(function($) {
 
             <article class="post">
                 <h2 class="title">
-                    <a href="http://soumyadsanyal.com/looking-at-the-dataset-cleaning-and-predicted-variables.html" rel="bookmark" title="Permanent Link to &quot;Looking at the dataset - cleaning and predicted variables&quot;">Looking at the dataset - cleaning and predicted variables</a>
+                    <a href="http://soumyadsanyal.com/looking-at-the-dataset-yet-more-cleaning-looking-at-the-predicted-variables.html" rel="bookmark" title="Permanent Link to &quot;Looking at the dataset - yet more cleaning, looking at the predicted variables&quot;">Looking at the dataset - yet more cleaning, looking at the predicted variables</a>
                 </h2>
 
                 <p>
@@ -3624,8 +3624,8 @@ TpIkqWdM4CRJknrGBE6SJKln/n+L5/kB9k43qgAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I've used a bin width of $\$100$ again, to keep things consistent. It looks like about half of all respondents spend less than $\$1000$ a year for office based services. Significant numbers of people (about 5,000 out of 36,000, or roughly 13\% of respondents) spend between $\$1000$ and $\$3000$ on office based services. After that, each $\$100$ bin contains relatively few people (less than 100), but these are at fairly high levels of expenditure for an average person or family.</p>
-<p>There is quite a bit of mass in the range $\$5000 - \$10,000$. These people, though few (at about 2\% of respondents), are paying a lot for office based healthcare services. It would be interesting to know how much of expenditure at this level is discretionary or non-essential, and how much of it is for relatively routine healthcare - perhaps for badly managed chronic illnesses, etc. In terms of informing policy, there's nothing wrong with the former, but since chronic illness tends to affect a broad section of people - not all of whom can afford to pay upto $\$10,000$ a year for healthcare services, there may be something to worry about if a lot of this high expenditure is for non-discretionary services.</p>
+<p>I've used a bin width of $\$100$ again, to keep things consistent. It looks like about half of all respondents spend less than $\$1000$ a year for office based services. Significant numbers of people (about 5,000 out of 36,000, or roughly $13\%$ of respondents) spend between $\$1000$ and $\$3000$ on office based services. After that, each $\$100$ bin contains relatively few people (less than 100), but these are at fairly high levels of expenditure for an average person or family.</p>
+<p>There is quite a bit of mass in the range $\$5000 - \$10,000$. These people, though few (at about $2\%$ of respondents), are paying a lot for office based healthcare services. It would be interesting to know how much of expenditure at this level is discretionary or non-essential, and how much of it is for relatively routine healthcare - perhaps for badly managed chronic illnesses, etc. In terms of informing policy, there's nothing wrong with the former, but since chronic illness tends to affect a broad section of people - not all of whom can afford to pay upto $\$10,000$ a year for healthcare services, there may be something to worry about if a lot of this high expenditure is for non-discretionary services.</p>
 <p>Let's look a bit further:</p>
 
 </div>
@@ -4181,7 +4181,7 @@ kg6Q9N2IuGaG+QJAR05lJQAwnmw/OiLuz8/fL2mTiDhijvpyZEQcNRfLBjBeOAIHYNy91PYHlPZ3
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, let's take a look at the other four predicted variables, in the following order:</p>
+<p>Next, let's take a look at the other three predicted variables, in the following order:</p>
 <ol>
 <li>Outpatient services</li>
 <li>Inpatient services</li>
@@ -5557,7 +5557,7 @@ kjQAAIAGIkkDAABoIJI0AACABiJJAwAAaKD/D4FooIqUV8bKAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In absolute terms, there seem to be not too many people at this level. There are about 400 people in this range, which is about 1\% of respondents. There are about 95 people, or 0.2\% of respondents that are paying over $\$3,000$ in this range.</p>
+<p>In absolute terms, there seem to be not too many people at this level. There are about 400 people in this range, which is about $1\%$ of respondents. There are about 95 people, or $0.2\%$ of respondents that are paying over $\$3,000$ in this range.</p>
 <p>Let's take a look at the rest of the data.</p>
 
 </div>
@@ -11469,6 +11469,13 @@ QgghhNDl/wGfKZzeedDhOQAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It looks much the same in this range.</p>
+<p>My main takeaway from doing this is that the expenditure for these four location based services follows a reasonable pattern for <em>most</em> people. That is, the majority of people will see charges for healthcare expenses that are reasonably insurable if on a plan with a low deductible, but that may bite for the average household on a plan with a relatively high deductible.</p>
+<p>One important issue these plots raise is the following: there is a minority of respondents that incur charges for healthcare that are so high as to be clearly financially ruinous for the median household. Questions to ask include:</p>
+<ol>
+<li>Do the respondents who incur these extremely high charges have the financial means to bear them? Or are they likely to go bankrupt?</li>
+<li>What characterizes the respondents with extremely high healthcare costs? Do certain illnesses come into play? Do these charges come at random? Are some people at greater risk than others? Would it help anyone if they were advised that they were at elevated financial risk because of some characteristic they have? Should they have a particular health insurance plan? Can I use any of these insights to build a better planning tool?</li>
+</ol>
+<p>These are important questions, and it would be fantastic if I could use my Insight project to shed some light on them, whether as part of the modeling process, or (even better) by integrating them into my webapp.</p>
 
 </div>
 </div>
@@ -11478,8 +11485,7 @@ QgghhNDl/wGfKZzeedDhOQAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now that we've looked at plots for the response variables, I'd like to take a look at the distributions for the explanatory variables.</p>
-<p>There are a lot of these, so I'll devote a blog post to looking at these separately and in a systematic way.</p>
+<p>In the next post, I'll take a look at the explanatory variables.</p>
 
 </div>
 </div>
@@ -11487,7 +11493,7 @@ QgghhNDl/wGfKZzeedDhOQAAAABJRU5ErkJggg==
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="http://soumyadsanyal.com/looking-at-the-dataset-cleaning-and-predicted-variables.html">posted at 12:43</a>
+                    <a href="http://soumyadsanyal.com/looking-at-the-dataset-yet-more-cleaning-looking-at-the-predicted-variables.html">posted at 12:43</a>
                     &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
                 </div>
             </article>
