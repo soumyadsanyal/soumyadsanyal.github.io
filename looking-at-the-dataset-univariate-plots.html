@@ -240,7 +240,7 @@ jQuery(document).ready(function($) {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this post, we're going to look at the explanatory features in the dataset.</p>
+<p>In this post, I'm going to look at the explanatory features in the dataset.</p>
 
 </div>
 </div>
@@ -250,14 +250,14 @@ jQuery(document).ready(function($) {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First, let's load all the modules we'll need.</p>
+<p>First, boilerplate:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -278,14 +278,14 @@ jQuery(document).ready(function($) {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, let's get our dataset and variables.</p>
+<p>Let's get our dataset and variables.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s">&quot;/home/soumya/research/insight/insight_project/modeling/data/dsm_data_scoped_variables.pkl&quot;</span><span class="p">)</span>
@@ -298,7 +298,7 @@ jQuery(document).ready(function($) {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">variables</span><span class="o">=</span><span class="p">[]</span>
@@ -407,6 +407,33 @@ TOT_HOSP_IP_FACILITY_+_DR_EXP_13
 TOTAL_ER_FACILITY_+_DR_EXP_13
 CENSUS_REGION_AS_OF_12/31/13
 EDUCATION_RECODE_(EDITED)
+AGE_AS_OF_12/31/13_(EDITED/IMPUTED)_BUCKET
+FAMILY&apos;S_TOTAL_INCOME_BUCKET
+ADULT_BODY_MASS_INDEX_(&gt;17)_-_RD_5/3_BUCKET
+AGE_OF_DIAGNOSIS-HIGH_BLOOD_PRESSURE_BUCKET
+AGE_OF_DIAGNOSIS-CORONARY_HEART_DISEASE_BUCKET
+AGE_OF_DIAGNOSIS-ANGINA_BUCKET
+AGE_OF_DIAGNOSIS-HEART_ATTACK(MI)_BUCKET
+AGE_OF_DIAGNOSIS-OTHER_HEART_DISEASE_BUCKET
+AGE_OF_DIAGNOSIS-STROKE_BUCKET
+AGE_OF_DIAGNOSIS-EMPHYSEMA_BUCKET
+AGE_OF_DIAGNOSIS-HIGH_CHOLESTEROL_BUCKET
+AGE_OF_DIAGNOSIS-DIABETES_BUCKET
+AGE_OF_DIAGNOSIS-ARTHRITIS_BUCKET
+AGE_OF_DIAGNOSIS-ASTHMA_BUCKET
+AGE_OF_DIAGNOSIS-ADHD/ADD_BUCKET
+FULL_YEAR_INSURANCE_COVERAGE_STATUS_2013_BUCKET
+#_WKS/MON_WOUT_HLTH_INS_PRV_YR-PN_18_ONL_BUCKET
+ANY_TIME_COVERAGE_BY_STATE_INS_-_R3/1_BUCKET
+#_OFFICE-BASED_PROVIDER_VISITS_13_BUCKET
+#_OUTPATIENT_DEPT_PROVIDER_VISITS_13_BUCKET
+#_EMERGENCY_ROOM_VISITS_13_BUCKET
+#_NIGHTS_IN_HOSP_FOR_DISCHARGES_2013_BUCKET
+FINAL_PERSON_WEIGHT_2013_BUCKET
+TOTAL_OFFICE-BASED_EXP_13_BUCKET
+TOTAL_OUTPATIENT_PROVIDER_EXP_13_BUCKET
+TOT_HOSP_IP_FACILITY_+_DR_EXP_13_BUCKET
+TOTAL_ER_FACILITY_+_DR_EXP_13_BUCKET
 </pre>
 </div>
 </div>
@@ -523,28 +550,6 @@ EDUCATION_RECODE_(EDITED)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">interpret</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span><span class="n">level</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">interpretation</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">interpretation</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="n">level</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span><span class="o">&lt;</span><span class="mi">50</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">interpretation</span><span class="p">[</span><span class="s">&quot;categorical&quot;</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="n">interpretation</span><span class="p">[</span><span class="s">&quot;categorical&quot;</span><span class="p">][</span><span class="n">level</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">level</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">level</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -567,7 +572,7 @@ EDUCATION_RECODE_(EDITED)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here I'm going to prototype a function that will spit out the empirical distributions of each of the explanatory variables, taking as parameter the variable position in the list data.columns .</p>
+<p>Next I'm going to prototype a function that will spit out the empirical distributions of each of the explanatory variables.</p>
 
 </div>
 </div>
@@ -595,11 +600,11 @@ EDUCATION_RECODE_(EDITED)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">check_discrete</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">thevariable</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">thevariable</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span><span class="o">&gt;</span><span class="mi">19</span> <span class="ow">or</span> <span class="s">&quot;AGE&quot;</span> <span class="ow">in</span> <span class="n">thevariable</span> <span class="ow">or</span> <span class="s">&quot;#&quot;</span> <span class="ow">in</span> <span class="n">thevariable</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">thevariable</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span><span class="o">&gt;</span><span class="mi">19</span> <span class="ow">or</span> <span class="s">&quot;AGE_OF&quot;</span> <span class="ow">in</span> <span class="n">thevariable</span> <span class="ow">or</span> <span class="s">&quot;AGE_AS&quot;</span> <span class="ow">in</span> <span class="n">thevariable</span> <span class="ow">or</span> <span class="s">&quot;#&quot;</span> <span class="ow">in</span> <span class="n">thevariable</span><span class="p">:</span>
         <span class="k">return</span> <span class="s">&quot;continuous&quot;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="s">&quot;categorical&quot;</span>
@@ -23405,6 +23410,29 @@ BQAA0CCKLQAAgAZRbAEAADSIYgsAAKBBFFsAAAAN+v+BoOHE1wfu+QAAAABJRU5ErkJggg==
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">data</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s">&quot;/home/soumya/research/insight/insight_project/modeling/data/dsm_data_cleaned_bucketized.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And finally, I'll write the new variable list to disk for future use.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">data</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 
 </div>
