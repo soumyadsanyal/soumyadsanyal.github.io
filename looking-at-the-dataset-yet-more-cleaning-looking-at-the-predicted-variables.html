@@ -4019,14 +4019,14 @@ SVIHWaRJkiR1kEWaJElSB1mkSZIkddD/D/WeftvARmonAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">aggregate</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span><span class="n">therange</span><span class="p">):</span>
     <span class="n">temp</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s">&quot;FINAL_PERSON_WEIGHT_2013&quot;</span><span class="p">][(</span><span class="n">data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">therange</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">therange</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
     <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 
-<span class="k">def</span> <span class="nf">paggregate</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">therange</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">print_aggregate</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">therange</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s">&quot;There are %s people in the range %s to %s&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">aggregate</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span><span class="n">therange</span><span class="p">),</span><span class="n">therange</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">therange</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 
@@ -4349,9 +4349,9 @@ k0QzMzMzG+H/AwsNVh+8kI/xAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">])</span>
-<span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">1000</span><span class="p">,</span><span class="mi">3000</span><span class="p">])</span>
-<span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">5000</span><span class="p">,</span><span class="mi">10000</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">])</span>
+<span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">1000</span><span class="p">,</span><span class="mi">3000</span><span class="p">])</span>
+<span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">5000</span><span class="p">,</span><span class="mi">10000</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -4380,8 +4380,8 @@ There are 8539737 people in the range 5000 to 10000
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I've used a bin width of $\$100$ again, to keep things consistent. It looks like about 240m people spend less than $\$1000$ a year for office based services. Significant numbers of people (about 50m people) spend between $\$1000$ and $\$3000$ on office based services. After that, each $\$100$ bin contains relatively few people (less than 100), but these are at fairly high levels of expenditure for an average person or family.</p>
-<p>There is quite a bit of mass in the range $\$5000 - \$10,000$. These people, though few (at 8.5 million people, or about $2.7\%$ of the population), are paying a lot for office based healthcare services. It would be interesting to know how much of expenditure at this level is discretionary or non-essential, and how much of it is for relatively routine healthcare - perhaps for badly managed chronic illnesses, etc. In terms of informing policy, there's nothing wrong with the former, but since chronic illness tends to affect a broad section of people - not all of whom can afford to pay upto $\$10,000$ a year for healthcare services, there may be something to worry about if a lot of this high expenditure is for non-discretionary services.</p>
+<p>I've used a bin width of $\$100$ again, to keep things consistent. It looks like about 240m people spend less than $\$1000$ a year for office based services. Significant numbers of people (about 50m people) spend between $\$1000$ and $\$3000$ on office based services. After that, each $\$100$ bin contains relatively few people, but these are at fairly high levels of expenditure for an average person or family.</p>
+<p>There is quite a bit of mass in the range $\$5000 - \$10,000$. These people, at 8.5 million people, or about $2.7\%$ of the population, are paying a lot for office based healthcare services. It would be interesting to know how much of expenditure at this level is discretionary or non-essential, and how much of it is for relatively routine healthcare - perhaps for badly managed chronic illnesses, etc. In terms of informing policy, there's nothing wrong with the former, but since chronic illness tends to affect a broad section of people - not all of whom can afford to pay upto $\$10,000$ a year for healthcare services, there may be something to worry about if a lot of this high expenditure is for non-discretionary services.</p>
 <p>Let's look a bit further:</p>
 
 </div>
@@ -4703,7 +4703,7 @@ QmCC
 <div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">10000</span><span class="p">,</span><span class="mi">50000</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">10000</span><span class="p">,</span><span class="mi">50000</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -5039,7 +5039,7 @@ xgBQkiRpxBgASpIkjRgDQEmSpBFjAChJkjRi/j++/TnREHAxPQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">50000</span><span class="p">,</span><span class="mi">250000</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">50000</span><span class="p">,</span><span class="mi">250000</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -5314,7 +5314,7 @@ cOM1LH9/awAAAABJRU5ErkJggg==
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">]</span>
 <span class="n">zoom_hist</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="p">,</span><span class="n">bin_width</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="p">)</span>
+<span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -5574,8 +5574,8 @@ NEmSpBlkkiZJkjSDTNIkSZJm0P8Dxj/Wtegk5VwAAAAASUVORK5CYII=
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">]</span>
 <span class="n">zoom_hist</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="p">,</span><span class="n">bin_width</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="p">)</span>
-<span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">])</span>
+<span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="p">)</span>
+<span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -6544,8 +6544,8 @@ AABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">])</span>
-<span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">3000</span><span class="p">,</span><span class="mi">10000</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">])</span>
+<span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">3000</span><span class="p">,</span><span class="mi">10000</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -6573,7 +6573,7 @@ There are 1168142 people in the range 3000 to 10000
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In absolute terms, there seem to be not too many people at this level. There are about 5.6m people in this range, which is about $1.75\%$ of the population. There are about 1.1m people, or $0.34\%$ of respondents that are paying over $\$3,000$ in this range.</p>
+<p>There are about 5.6m people in this range, which is about $1.75\%$ of the population. There are about 1.1m people, or $0.34\%$ of respondents that are paying over $\$3,000$ in this range.</p>
 <p>Let's take a look at the rest of the data.</p>
 
 </div>
@@ -6886,7 +6886,7 @@ twvwg/JJ4VvKOJYAr4+I+2g+aPGytYw9u27XitTHA2cA2wMvAr6YmVev5XEl6UGiaW2RJHWLiIdn
 <div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">10000</span><span class="p">,</span><span class="mi">50000</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">10000</span><span class="p">,</span><span class="mi">50000</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -8166,7 +8166,7 @@ RK5CYII=
 <div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">20000</span><span class="p">,</span><span class="mi">50000</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">20000</span><span class="p">,</span><span class="mi">50000</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -8501,7 +8501,7 @@ SRIA/z/Z+B/2xLyZgwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">paggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">50000</span><span class="p">,</span><span class="mi">350000</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">print_aggregate</span><span class="p">(</span><span class="n">thevar</span><span class="p">,</span><span class="n">therange</span><span class="o">=</span><span class="p">[</span><span class="mi">50000</span><span class="p">,</span><span class="mi">350000</span><span class="p">])</span>
 </pre></div>
 
 </div>
