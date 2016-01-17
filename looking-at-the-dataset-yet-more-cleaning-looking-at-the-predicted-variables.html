@@ -905,7 +905,7 @@ Pop the last entry from the column names
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Perfect.</p>
 <p>One thing worth remarking on is that I've actually extracted the variable <strong>description</strong> rather than the variable name in this step. This was a deliberate decision, as I find it much more intuitive to work with variable names like "MOST RECENT COLONOSCOPY (&gt;39) - R5/3" rather than the variable name "CLNTST53". Those of you familiar with the constraints of variable names in SQL databases will object that this is going to cause trouble in the future. I decided to go with the more descriptive variable names, and write a coding-decoding function to help move data in and out of SQL databases a bit later in the project. Overall, I found this to be a reasonable choice.</p>
-<p>To this end, let me go head and get rid of the spaces in the variables names before that causes any bugs down the road.</p>
+<p>To this end, let me go ahead and get rid of the spaces in the variables names before that causes any bugs down the road.</p>
 
 </div>
 </div>
@@ -1171,7 +1171,7 @@ Value     Definition
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f110c11eb00&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fd0903987f0&gt;</pre>
 </div>
 
 </div>
@@ -1408,13 +1408,24 @@ JElqwCJKkiSpAYsoSZKkBiyiJEmSGvj/YNgvPleLB6oAAAAASUVORK5CYII=
                             <span class="mi">13</span><span class="p">:</span> <span class="s">&quot;PUBLIC ADMINISTRATION&quot;</span><span class="p">,</span>
                             <span class="mi">14</span><span class="p">:</span> <span class="s">&quot;MILITARY&quot;</span><span class="p">,</span>
                             <span class="mi">15</span><span class="p">:</span> <span class="s">&quot;UNCLASSIFIABLE INDUSTRY&quot;</span><span class="p">}</span>
-<span class="n">interpretation</span><span class="p">[</span><span class="s">&quot;OCCUPATION_GROUP_RD_3/1_CMJ&quot;</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="o">-</span><span class="mi">9</span><span class="p">:</span> <span class="s">&quot;NOT ASCERTAINED&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="s">&quot;INAPPLICABLE&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s">&quot;MANAGEMENT, BUSINESS, AND FINANCIAL OPER&quot;</span><span class="p">,</span>
-                              <span class="mi">2</span><span class="p">:</span> <span class="s">&quot;PROFESSIONAL AND RELATED OCCUPATIONS&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s">&quot;SERVICE OCCUPATIONS&quot;</span><span class="p">,</span> 
-                              <span class="mi">4</span><span class="p">:</span> <span class="s">&quot;SALES AND RELATED OCCUPATIONS&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s">&quot;OFFICE AND ADMINISTRATIVE SUPPORT&quot;</span><span class="p">,</span>
-                              <span class="mi">6</span><span class="p">:</span> <span class="s">&quot;FARMING, FISHING, AND FORESTRY&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="s">&quot;CONSTRUCTION, EXTRACTION, AND MAINTENANC&quot;</span><span class="p">,</span>
-                              <span class="mi">8</span><span class="p">:</span> <span class="s">&quot;PRODUCTION, TRNSPORTATION, MATRL MOVING&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s">&quot;MILITARY SPECIFIC OCCUPATIONS&quot;</span><span class="p">,</span>
-                              <span class="mi">11</span><span class="p">:</span> <span class="s">&quot;UNCLASSIFIABLE OCCUPATION&quot;</span><span class="p">}</span>
-<span class="n">interpretation</span><span class="p">[</span><span class="s">&quot;CENSUS_REGION_AS_OF_12/31/13&quot;</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="s">&quot;Inapplicable&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s">&quot;Northeast&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s">&quot;Midwest&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s">&quot;South&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="s">&quot;West&quot;</span><span class="p">}</span>
+<span class="n">interpretation</span><span class="p">[</span><span class="s">&quot;OCCUPATION_GROUP_RD_3/1_CMJ&quot;</span><span class="p">]</span><span class="o">=</span><span class="p">{</span>
+    <span class="o">-</span><span class="mi">9</span><span class="p">:</span> <span class="s">&quot;NOT ASCERTAINED&quot;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="s">&quot;INAPPLICABLE&quot;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s">&quot;MANAGEMENT, BUSINESS, AND FINANCIAL OPER&quot;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s">&quot;PROFESSIONAL AND RELATED OCCUPATIONS&quot;</span><span class="p">,</span> 
+    <span class="mi">3</span><span class="p">:</span> <span class="s">&quot;SERVICE OCCUPATIONS&quot;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s">&quot;SALES AND RELATED OCCUPATIONS&quot;</span><span class="p">,</span> 
+    <span class="mi">5</span><span class="p">:</span> <span class="s">&quot;OFFICE AND ADMINISTRATIVE SUPPORT&quot;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="s">&quot;FARMING, FISHING, AND FORESTRY&quot;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="s">&quot;CONSTRUCTION, EXTRACTION, AND MAINTENANC&quot;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="s">&quot;PRODUCTION, TRNSPORTATION, MATRL MOVING&quot;</span><span class="p">,</span> 
+    <span class="mi">9</span><span class="p">:</span> <span class="s">&quot;MILITARY SPECIFIC OCCUPATIONS&quot;</span><span class="p">,</span>
+    <span class="mi">11</span><span class="p">:</span> <span class="s">&quot;UNCLASSIFIABLE OCCUPATION&quot;</span><span class="p">}</span>
+<span class="n">interpretation</span><span class="p">[</span><span class="s">&quot;CENSUS_REGION_AS_OF_12/31/13&quot;</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="s">&quot;Inapplicable&quot;</span><span class="p">,</span>
+                                                <span class="mi">1</span><span class="p">:</span><span class="s">&quot;Northeast&quot;</span><span class="p">,</span>
+                                                <span class="mi">2</span><span class="p">:</span><span class="s">&quot;Midwest&quot;</span><span class="p">,</span>
+                                                <span class="mi">3</span><span class="p">:</span><span class="s">&quot;South&quot;</span><span class="p">,</span>
+                                                <span class="mi">4</span><span class="p">:</span><span class="s">&quot;West&quot;</span><span class="p">}</span>
 <span class="n">interpretation</span><span class="p">[</span><span class="s">&quot;EMPLOYMENT_STATUS_RD_3/1&quot;</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="o">-</span><span class="mi">9</span><span class="p">:</span> <span class="s">&quot;NOT ASCERTAINED&quot;</span><span class="p">,</span>
                                             <span class="o">-</span><span class="mi">8</span><span class="p">:</span> <span class="s">&quot;DK&quot;</span><span class="p">,</span>
                                             <span class="o">-</span><span class="mi">7</span><span class="p">:</span> <span class="s">&quot;REFUSED&quot;</span><span class="p">,</span>
@@ -1424,15 +1435,16 @@ JElqwCJKkiSpAYsoSZKkBiyiJEmSGvj/YNgvPleLB6oAAAAASUVORK5CYII=
                                             <span class="mi">3</span><span class="p">:</span> <span class="s">&quot;JOB DURING RD 3/1 REF PERIOD&quot;</span><span class="p">,</span>
                                             <span class="mi">4</span><span class="p">:</span> <span class="s">&quot;NOT EMPLOYED DURING RD 3/1&quot;</span><span class="p">}</span>
 
-<span class="n">interpretation</span><span class="p">[</span><span class="s">&quot;FULL_YEAR_INSURANCE_COVERAGE_STATUS_2013&quot;</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s">&quot;&lt;65 ANY PRIVATE&quot;</span><span class="p">,</span>
-                                                            <span class="mi">2</span><span class="p">:</span> <span class="s">&quot;&lt;65 PUBLIC ONLY&quot;</span><span class="p">,</span>
-                                                            <span class="mi">3</span><span class="p">:</span> <span class="s">&quot;&lt;65 UNINSURED&quot;</span><span class="p">,</span>
-                                                            <span class="mi">4</span><span class="p">:</span> <span class="s">&quot;65+ EDITED MEDICARE ONLY&quot;</span><span class="p">,</span>
-                                                            <span class="mi">5</span><span class="p">:</span> <span class="s">&quot;65+ EDITED MEDICARE AND PRIVATE&quot;</span><span class="p">,</span>
-                                                            <span class="mi">6</span><span class="p">:</span> <span class="s">&quot;65+ EDITED MEDICARE AND OTH PUB ONLY&quot;</span><span class="p">,</span>
-                                                            <span class="mi">7</span><span class="p">:</span> <span class="s">&quot;65+ UNINSURED&quot;</span><span class="p">,</span>
-                                                            <span class="mi">8</span><span class="p">:</span> <span class="s">&quot;65+ NO MEDICARE AND ANY PUBLIC/PRIVATE&quot;</span>
-                                                           <span class="p">}</span>
+<span class="n">interpretation</span><span class="p">[</span><span class="s">&quot;FULL_YEAR_INSURANCE_COVERAGE_STATUS_2013&quot;</span><span class="p">]</span><span class="o">=</span><span class="p">{</span>
+     <span class="mi">1</span><span class="p">:</span> <span class="s">&quot;&lt;65 ANY PRIVATE&quot;</span><span class="p">,</span>
+     <span class="mi">2</span><span class="p">:</span> <span class="s">&quot;&lt;65 PUBLIC ONLY&quot;</span><span class="p">,</span>
+     <span class="mi">3</span><span class="p">:</span> <span class="s">&quot;&lt;65 UNINSURED&quot;</span><span class="p">,</span>
+     <span class="mi">4</span><span class="p">:</span> <span class="s">&quot;65+ EDITED MEDICARE ONLY&quot;</span><span class="p">,</span>
+     <span class="mi">5</span><span class="p">:</span> <span class="s">&quot;65+ EDITED MEDICARE AND PRIVATE&quot;</span><span class="p">,</span>
+     <span class="mi">6</span><span class="p">:</span> <span class="s">&quot;65+ EDITED MEDICARE AND OTH PUB ONLY&quot;</span><span class="p">,</span>
+     <span class="mi">7</span><span class="p">:</span> <span class="s">&quot;65+ UNINSURED&quot;</span><span class="p">,</span>
+     <span class="mi">8</span><span class="p">:</span> <span class="s">&quot;65+ NO MEDICARE AND ANY PUBLIC/PRIVATE&quot;</span>
+    <span class="p">}</span>
 </pre></div>
 
 </div>
@@ -5202,7 +5214,7 @@ xgBQkiRpxBgASpIkjRgDQEmSpBFjAChJkjRi/j++/TnREHAxPQAAAABJRU5ErkJggg==
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f10e7ca8400&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fd092393080&gt;</pre>
 </div>
 
 </div>
