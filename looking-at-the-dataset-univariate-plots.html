@@ -14,8 +14,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1110,7 +1110,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2539,7 +2538,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3030,7 +3028,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8761,6 +8758,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8963,8 +8963,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8987,6 +8993,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9123,6 +9139,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9212,6 +9231,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9256,6 +9278,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9552,6 +9577,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9572,11 +9598,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11247,7 +11268,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11559,6 +11580,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11572,6 +11594,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11634,8 +11659,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11646,9 +11673,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 </style>
 
@@ -11897,7 +11926,9 @@ jQuery(document).ready(function($) {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>AGE_AS_OF_12/31/13_(EDITED/IMPUTED)
 SEX
@@ -12201,7 +12232,9 @@ EDUCATION_RECODE_(EDITED)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Continuous features
 
@@ -12391,7 +12424,9 @@ EDUCATION_RECODE_(EDITED)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -12643,7 +12678,9 @@ Bi9JkqSeGLwkSZJ68v8D8brAt6PSlPMAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -12885,7 +12922,9 @@ kf8fqMf7pAe+RrwAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -13116,7 +13155,9 @@ JEnqiMFLkiSpIwYvSZKkjvx/8Ge/DKad+KYAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -13340,7 +13381,9 @@ JEmSGjF4SZIkNWLwkiRJasTgJUmS1Mj/B6wBJlDmTvRhAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -13565,7 +13608,9 @@ S5IkqRGDlyRJUiP/D2zFq3gJqF9RAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -13796,7 +13841,9 @@ eEmSJDVi8JIkSWrE4CVJktTI/we6IqdivcRDSAAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -14020,7 +14067,9 @@ vp4AAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -14251,7 +14300,9 @@ jhi8JEmSOmLwkiRJ6ojBS5IkqSMGL0mSpI78fwrLQK1gS0PGAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -14510,7 +14561,9 @@ kiRJHfn/PMLoBKQ3vLAAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -14770,7 +14823,9 @@ pM44uF6SJKkjBi9JkqSOGLwkSZI6YvCSJEnqiMFLkiSpI/8fdAojoAU0B0YAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15027,7 +15082,9 @@ yVTG7ODOlwAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15251,7 +15308,9 @@ WLVzRqLLAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15455,7 +15514,9 @@ SUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15658,7 +15719,9 @@ M+hO8w47papeMIVypI2KwUuSJKkRTzVKkiQ1YvCSJElqxOAlSZLUiMFLkiSpEYOXJElSI/8ftHaC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15861,7 +15924,9 @@ JDVi8JIkSWrE4CVJktSIwUuSJKkRg5ckSVIj/w+2uAAafRw3YgAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -16060,7 +16125,9 @@ NWLwkiRJauT/A/AehvgdrwN7AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -16257,7 +16324,9 @@ JKkRg5ckSVIjBi9JkqRG/j/vfsaNrHrY/gAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -16466,7 +16535,9 @@ Zv+fdmzZRqG9QOCjQ7P/UFUP6LR5FUNXndLcQuMNk65vGtqxYl8dsejhVfWbvuuRlhODlyRJUk88
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -16676,7 +16747,9 @@ AAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -16873,7 +16946,9 @@ DF6SJEmN/H9nnQ6shZWXLAAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17085,7 +17160,9 @@ RK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17303,7 +17380,9 @@ VKMkSVJPDF6SJEk9MXhJkiT1xOAlSZLUE4OXJElST/4/Vo5iVJqm4sQAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17528,7 +17607,9 @@ SZKknhi8JEmSemLwkiRJ6onBS5IkqSf/Hxy332ZPHL01AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17733,7 +17814,9 @@ AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17960,7 +18043,9 @@ eAfdPGNTkWRX4BxDlzQ9tnhJ2qAl+QZw67HVz6qqs4aoZ9qS7MLYhKfAb6rq4UPUI2myDF6SJEmN
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -18223,7 +18308,9 @@ QmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -18487,7 +18574,9 @@ AABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -18731,7 +18820,9 @@ SVJPDF6SJEk9MXhJkiT1xOAlSZLUk/8PUoz7oXlaKoYAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -18946,7 +19037,9 @@ xOAlSZLUyP8Hb9WC0/sNBT0AAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -19191,7 +19284,9 @@ eEmSJHXE4CVJktQRg5ckSVJHDF6SJEkd+f8BD5iuVQwLuLUAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -19429,7 +19524,9 @@ n7H43qo6ZCX2tyhf39LqYIuXJElSRzyrUZIkqSMGL0mSpI4YvCRJkjpi8JIkSeqIwUuSJKkj/x+A
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -19666,7 +19763,9 @@ SZI64uB6SZKkjhi8JEmSOmLwkiRJ6ojBS5IkqSMGL0mSpI78f6UItWxu9yu3AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -19924,7 +20023,9 @@ SVJHDF6SJEkdMXhJkiR1xOAlSZLUEYOXJElSR/4/rJ3HqSv87/gAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -20163,7 +20264,9 @@ apQkSeqIwUuSJKkjBi9JkqSOGLwkSZI6YvCSJEnqyP8Hrb+WoD3tgsMAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -20424,7 +20527,9 @@ GLwkSZI6YvCSJEnqiMFLkiSpIwYvSZKkjvx/rqy/K9CmBM0AAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -20663,7 +20768,9 @@ q3PfTrI38PaByT+qqqED/aVJYouXJElSTzyqUZIkqScGL0mSpJ4YvCRJknpi8JIkSeqJwUuSJKkn
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -20911,7 +21018,9 @@ jz1Uw1bAl+bYtPfgar++jKu2JN8Abjiy+gldjFmbo5YjaK5KHPaSdv61sb8e14fXmNQXW7wkSZI6
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -21134,7 +21243,9 @@ QmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -21363,7 +21474,9 @@ S5IkqSMGL0mSpI4YvCRJkjpi8JIkSerI/w9q1Qc81Ei8XAAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -21592,7 +21705,9 @@ kiR1xOAlSZLUkf8PfgwzeSv8JYQAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -21897,7 +22012,9 @@ yDrjLkDS+CV5PzB4xtu7+4aA5rrv42jmS/X7WVXtNVP7paC9oOfLB1Z/t6peOoZyJE0Qe7wkSZI6
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -22035,7 +22152,9 @@ AQAMIngBAAwieAEADPL/ASXtHDxFnsWbAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -22344,7 +22463,9 @@ DeKBl5mZmVmDeOBlZmZm1iAeeJmZmZk1iAdeZmZmZg3yP8c968J4RbzdAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -22674,7 +22795,9 @@ bBiSdCBpSaa0LiJaeQ6XDYCkKfR9rMSKiOj3lwTM7P+PAy8zMzOzNvG3Gs3MzMzaxIGXmZmZWZs4
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -23032,7 +23155,9 @@ KyIiIqIhSbwiIiIiGvL/asmqRWdxBI8AAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -23295,7 +23420,9 @@ DF6SJEkdMXhJkiR15P8DgOHWdaETsG4AAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -23540,7 +23667,9 @@ P1Q5LFtP1EjLAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -23784,7 +23913,9 @@ qSMGL0mSpI4YvCRJkjry/wDVqm4295VioAAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -24341,7 +24472,9 @@ ZcVTnmgAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -24585,7 +24718,9 @@ PTF4SZIk9cTgJUmS1JP/D5YHut7OKjK8AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -25229,7 +25364,9 @@ qet3jgt+KQAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -25491,7 +25628,9 @@ SZJ6YvCSJEnqicFLkiSpJwYvSZKknhi8JEmSevL/A7xMZUE5e/PbAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -25756,7 +25895,9 @@ JKkj/x9q6EnGGhygUQAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -26020,7 +26161,9 @@ QmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -26463,7 +26606,9 @@ sk1OdgAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -26695,7 +26840,9 @@ B/rdLbUsQMe4AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -26887,7 +27034,9 @@ dq6XJElqxOAlSZLUiMFLkiSpEYOXJElSIwYvSZKkRv4/AooGtidGIkgAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -27070,7 +27219,9 @@ rkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -27248,7 +27399,9 @@ JEmNGLwkSZIaMXhJkiQ18v8BTzU34NheYkUAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -27461,7 +27614,9 @@ kiRJ6sn/B4ky8D5ihBWUAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -27689,7 +27844,9 @@ L0mSpI4YvCRJkjry/wGBxV48jwDQZgAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -28236,7 +28393,9 @@ zFxVbgAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -28341,7 +28500,9 @@ zFxVbgAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -28643,7 +28804,9 @@ AAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -28964,7 +29127,9 @@ KK4Qti4m+uss6URSfl3VhRHx8fGoj5l15iFgMzMzs8J4CNjMzMysMG4AmpmZ/f9260AAAAAAQJC/
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -29310,7 +29475,9 @@ AABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -29617,7 +29784,9 @@ QXZWpqcAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -29918,7 +30087,9 @@ mZnVlBM9MzMzs5r6/wHlQlSESly2RwAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -30260,7 +30431,9 @@ LwiCIAiCYJDyH3Y1YKeKS3rgAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -30563,7 +30736,9 @@ gg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -30882,7 +31057,9 @@ OysariZsAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -31194,7 +31371,9 @@ zKww7gCamZmZFeb/A9H6Y/nP1Jf3AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -31503,7 +31682,9 @@ JfJIAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -31838,7 +32019,9 @@ TkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -32127,7 +32310,9 @@ mZlZYZwAmpmZmRXGCaCZmZlZYZwAmpmZmRXm/wPdMzmX9SdBGAAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -32452,7 +32637,9 @@ kqSKmPxJkiRVxORPkiSpIiZ/kiRJFTH5kyRJqsj/D+Ux2DnhCNfTAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -32754,7 +32941,9 @@ AABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>count     36940.000000
 mean      58199.456984
@@ -32800,7 +32989,9 @@ Name: FAMILY&#39;S_TOTAL_INCOME, dtype: float64
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[19]:</div>
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -32909,7 +33100,9 @@ Name: FAMILY&#39;S_TOTAL_INCOME, dtype: float64
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -33229,7 +33422,9 @@ r88AAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[21]:</div>
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -33300,7 +33495,9 @@ r88AAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[22]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -33364,7 +33561,9 @@ dtype: int64</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -33711,7 +33910,9 @@ JlgAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -33949,7 +34150,9 @@ h7sAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -34196,7 +34399,9 @@ e6AAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -34435,7 +34640,9 @@ HMoEBoztr0vaoW32kRFx/GT0ZzLli78e2Db7goj4j0noThP7s4ukz7bNviEi3jgZ/QHAoUwAAIDG
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -34719,7 +34926,9 @@ ANAnSMwAAAD6xP8HLA35gGZ960UAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>count    36940.000000
 mean         4.454548
@@ -34796,7 +35005,9 @@ Name: #_NIGHTS_IN_HOSP_FOR_DISCHARGES_2013, dtype: float64
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -35041,7 +35252,9 @@ Mi3C9i8ktV+Vf/+IWNWTM4CRw9AhAABATRg6BAAAqAmFFgAAQE0otAAAAGpCoQUAAFATCi0AAICa
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -35293,7 +35506,9 @@ VvU6aAAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -35541,7 +35756,9 @@ gg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -35870,7 +36087,10 @@ kFsQT7BYNwAAAABJRU5ErkJggg==
 
 </div>
 </div>
-</div></p>
+</div>
+ 
+
+</p>
                 <div class="clear"></div>
 
                 <div class="info">

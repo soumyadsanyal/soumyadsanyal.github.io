@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Soumya D. Sanyal | Graduate Student Seminar</title>
+        <meta charset="utf-8" />
+    <title>Soumya D. Sanyal | Logistic regression and perfect separation Date: 2017-02-03 07:00</title>
     <link rel="shortcut icon" type="image/png" href="http://soumyadsanyal.com/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="http://soumyadsanyal.com/favicon.ico">
 
@@ -14,8 +14,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1110,6 +1110,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2538,6 +2539,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3028,6 +3030,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8758,9 +8761,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8963,14 +8963,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8993,16 +8987,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9139,9 +9123,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9231,9 +9212,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9278,9 +9256,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9577,7 +9552,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9598,6 +9572,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11268,7 +11247,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11580,7 +11559,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11594,9 +11572,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11659,10 +11634,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11673,11 +11646,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 </style>
 
@@ -11818,6 +11789,7 @@ jQuery(document).ready(function($) {
     <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
 
+
 </head>
 <body>
     <header>
@@ -11834,90 +11806,127 @@ jQuery(document).ready(function($) {
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">
-            <div class="page">
-                <h2>Spring 2010</h2>
-<hr>
-<p>The <a href="http://soumyadsanyal.com/pages/graduate-student-seminar.html">Graduate Student Seminar</a> in the <a href="http://www.math.missouri.edu"> Department of Mathematics</a> at the <a href="http://www.missouri.edu"> University of Missouri</a> meets weekly in 111 <a href="http://map.missouri.edu/recreation-east.htm"> Mathematical Sciences Building</a> at 4pm on Wednesdays. </p>
-<p>Questions, comments, suggestions, titles and abstracts are welcome at (email): soumya [dot] d [dot] sanyal [at] mail [dot] mizzou [dot] edu . </p>
-<h2>Schedule (Spring 2010)</h2>
-<ul>
-<li>
-<p><strong>Wednesday 17th February 2010</strong></p>
-<p>Soumya D. Sanyal<br>
-"Hilbert's Nullstellensatz I"   </p>
-</li>
-<li>
-<p><strong>Wednesday 24th February 2010</strong></p>
-<p>Soumya D. Sanyal / Vinh Pham An <br>
-"Hilbert's Nullstellensatz II"   </p>
-</li>
-<li>
-<p><strong>Wednesday 3rd March 2010</strong></p>
-<p>Vinh Pham An <br>
-"Hilbert's Nullstellensatz III"   </p>
-</li>
-<li>
-<p><strong>Wednesday 10th March 2010</strong></p>
-<p>Soumya D. Sanyal <br>
-"Noether's Normalization Lemma"   </p>
-</li>
-<li>
-<p><strong>Wednesday 17th March 2010</strong></p>
-<p>Meeting cancelled   </p>
-</li>
-<li>
-<p><strong>Wednesday 24th March 2010</strong></p>
-<p>Dwight Thieme <br>
-"Grobner Bases"   </p>
-</li>
-<li>
-<p><strong>Wednesday 31st March 2010</strong></p>
-<p>No meeting over spring break   </p>
-</li>
-<li>
-<p><strong>Wednesday 7th April 2010</strong></p>
-<p>Joel Sievert <br>
-"Maximal fields and valuations"   </p>
-</li>
-<li>
-<p><strong>Wednesday 14th April 2010</strong></p>
-<p>James Cook <br>
-"Nets and filters I"   </p>
-</li>
-<li>
-<p><strong>Wednesday 21st April 2010</strong></p>
-<p>James Cook <br>
-"Nets and filters II"   </p>
-</li>
-<li>
-<p><strong>Wednesday 28th April 2010</strong></p>
-<p>Departmental Awards Ceremony in MSB 328   </p>
-</li>
-<li>
-<p><strong>Wednesday 5th May 2010</strong></p>
-<p>David Covert <br>
-"Kloosterman sums and applications to Fourier analysis over finite fields"   </p>
-</li>
-<li>
-<p><strong>Wednesday 12th May 2010</strong></p>
-<p>Meeting cancelled   </p>
-</li>
-<li>
-<p><strong>Wednesday 19th May 2010</strong></p>
-<p>David Covert <br>
-"A Furstenberg-Katznelson-Weiss type theorem on (d+1)-point configurations in finite fields"   </p>
-</li>
-</ul>
-<hr>
-<h2>Graduate Student Seminar Archive</h2>
-<ul>
-<li><a href="http://soumyadsanyal.com/pages/graduate-seminar-fall-2009.html">Graduate Student Seminar Fall 2009 </a> </li>
-<li><a href="http://soumyadsanyal.com/pages/graduate-seminar-spring-2009.html">Graduate Student Seminar Spring 2009 </a> </li>
-</ul>
-<hr>
-            </div>
+        <div id="content">            <h4 class="date">Feb 03, 2017</h4>
 
+            <article class="post">
+                <h2 class="title">
+                    <a href="http://soumyadsanyal.com/logistic-regression-and-perfect-separation-date-2017-02-03-0700.html" rel="bookmark" title="Permanent Link to &quot;Logistic regression and perfect separation Date: 2017-02-03 07:00&quot;">Logistic regression and perfect separation Date: 2017-02-03 07:00</a>
+                </h2>
+
+                <p>In this and a couple of other posts I'm taking notes on a
+<a href="https://ora.ox.ac.uk/objects/uuid:8f9ee0d0-d78e-4101-9ab4-f9cbceed2a2a">thesis</a>
+by Kjell Konis that came to my attention in an issue in the
+<a href="https://github.com/statsmodels/statsmodels">statsmodels</a> project.</p>
+<p>The paper's main contribution is a linear programming technique to detect when
+a dataset in <span class="math">\(\mathbb{R}^d\)</span> can be separated by a hyperplane, the issue being
+that when it can, the maximum likelihood estimate for the parameter vector
+<span class="math">\(\beta\)</span> does not exist, and iterative methods for estimating it will not
+converge. The author has committed an implementation of this technique to the R
+project, and a contribution to issue
+<a href="https://github.com/statsmodels/statsmodels/issues/1705">#1705</a> could provide
+an implementation in the statsmodels project. At the moment there is a
+<a href="https://github.com/statsmodels/statsmodels/blob/master/statsmodels/discrete/discrete_model.py#L181">heuristic check</a>
+for this a couple of binary models that seems to raise an exception when the
+model fit values are <em>too</em> close to the data, but I gather it would be good to have a
+formal test available.</p>
+<p>A quick reminder of what the logistic regression model is: assuming an
+experiment where the outcome <span class="math">\(y\)</span> is binary, with <span class="math">\(Pr(y=1) = \pi\)</span>, we estimate
+the log-odds as a linear function of the data <span class="math">\(X\)</span>: $ log(\frac{\pi}{1-\pi}) =
+\beta^TX $</p>
+<p>A standard way to estimate the parameter vector <span class="math">\(\beta\)</span> here is to use the
+maximum likelihood estimate, which can be quickly derived.</p>
+<h1>Maximum likelihood estimate for logistic regression models</h1>
+<p>First step here is to compute the likelihood function, which is essentially
+given by the probability density function, but viewed as a function of the
+model parameters, with the exogeneous data held fixed (in training). </p>
+<p>In this case the dataset, <span class="math">\(\{ (y_i, X_i) \}\)</span>, has a dependent variable that
+takes only the values <span class="math">\(1\)</span> with probability <span class="math">\(\pi_i\)</span>, or <span class="math">\(0\)</span> with probability
+<span class="math">\(1-\pi_i\)</span>, where for the moment <span class="math">\(\pi_i\)</span> is the model estimate for row <span class="math">\(i\)</span> in
+The dataset. This pdf is basically that of a <span class="math">\(\text{Bernoulli}(\pi_i)\)</span> trial,
+and can be written more compactly as <span class="math">\(f(y_i, \pi_i) =
+\pi_i^{y_i}(1-\pi_i)^{1-y_i}\)</span>.  In particular the joint pdf is then <span class="math">\(\Pi_i
+\pi_i^{y_i}(1-\pi_i)^{1-y_i}\)</span>.</p>
+<p>Accordingly, the likelihood of the sample given parameters <span class="math">\(\pi\)</span> is given by</p>
+<p><span class="math">\(L(\pi; y) = \Pi_i \pi_i^{y_i}(1-\pi_i)^{1-y_i}\)</span>, </p>
+<p>and the log-likelihood is </p>
+<p><span class="math">\(l(\pi; y) = \sum_{i} y_ilog(\pi_i) + (1-y_i)log(1-\pi_i)\)</span>.</p>
+<p>Given that we estimate the equation</p>
+<p><span class="math">\(log(\frac{\pi_i}{1-\pi_i}) = \beta^TX_i\)</span>,</p>
+<p>we can rewrite the log-likelihood by using the following substitution:</p>
+<p><span class="math">\(\pi_i = \frac{1}{1+e^{-\beta^TX_i}}\)</span></p>
+<p>to get that</p>
+<p>$l(\beta; y) = \sum_{i} -y_ilog(1+e^{-\beta^TX_i}) + log(e^{-\beta^TX_i}) -
+log(1+e^{-\beta^TX_i}) + y_i\beta^TX_i + y_ilog(1+e^{-\beta^TX_i}) $</p>
+<p>or</p>
+<p>$l(\beta; y) = \sum_{i}  y_i\beta^TX_i - log(1+e^{\beta^TX_i}) $</p>
+<p>It appears that there is no general closed-form solution to the problem </p>
+<p><span class="math">\(\frac{\partial l(\beta; y, X)}{\partial \beta}=0\)</span></p>
+<p>and that the solution is generally found using iterative methods such as
+iteratively reweighted least squares, or Newton's method.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="http://soumyadsanyal.com/logistic-regression-and-perfect-separation-date-2017-02-03-0700.html">posted at 23:13</a>
+                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
+                </div>
+            </article>
             <div class="clear"></div>
             <footer>
                 <p>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Soumya D. Sanyal | Graduate Student Seminar</title>
+        <meta charset="utf-8" />
+    <title>Soumya D. Sanyal | Logistic regression and perfect separation</title>
     <link rel="shortcut icon" type="image/png" href="http://soumyadsanyal.com/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="http://soumyadsanyal.com/favicon.ico">
 
@@ -11818,6 +11818,7 @@ jQuery(document).ready(function($) {
     <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
 
+
 </head>
 <body>
     <header>
@@ -11834,90 +11835,128 @@ jQuery(document).ready(function($) {
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">
-            <div class="page">
-                <h2>Spring 2010</h2>
-<hr>
-<p>The <a href="http://soumyadsanyal.com/pages/graduate-student-seminar.html">Graduate Student Seminar</a> in the <a href="http://www.math.missouri.edu"> Department of Mathematics</a> at the <a href="http://www.missouri.edu"> University of Missouri</a> meets weekly in 111 <a href="http://map.missouri.edu/recreation-east.htm"> Mathematical Sciences Building</a> at 4pm on Wednesdays. </p>
-<p>Questions, comments, suggestions, titles and abstracts are welcome at (email): soumya [dot] d [dot] sanyal [at] mail [dot] mizzou [dot] edu . </p>
-<h2>Schedule (Spring 2010)</h2>
-<ul>
-<li>
-<p><strong>Wednesday 17th February 2010</strong></p>
-<p>Soumya D. Sanyal<br>
-"Hilbert's Nullstellensatz I"   </p>
-</li>
-<li>
-<p><strong>Wednesday 24th February 2010</strong></p>
-<p>Soumya D. Sanyal / Vinh Pham An <br>
-"Hilbert's Nullstellensatz II"   </p>
-</li>
-<li>
-<p><strong>Wednesday 3rd March 2010</strong></p>
-<p>Vinh Pham An <br>
-"Hilbert's Nullstellensatz III"   </p>
-</li>
-<li>
-<p><strong>Wednesday 10th March 2010</strong></p>
-<p>Soumya D. Sanyal <br>
-"Noether's Normalization Lemma"   </p>
-</li>
-<li>
-<p><strong>Wednesday 17th March 2010</strong></p>
-<p>Meeting cancelled   </p>
-</li>
-<li>
-<p><strong>Wednesday 24th March 2010</strong></p>
-<p>Dwight Thieme <br>
-"Grobner Bases"   </p>
-</li>
-<li>
-<p><strong>Wednesday 31st March 2010</strong></p>
-<p>No meeting over spring break   </p>
-</li>
-<li>
-<p><strong>Wednesday 7th April 2010</strong></p>
-<p>Joel Sievert <br>
-"Maximal fields and valuations"   </p>
-</li>
-<li>
-<p><strong>Wednesday 14th April 2010</strong></p>
-<p>James Cook <br>
-"Nets and filters I"   </p>
-</li>
-<li>
-<p><strong>Wednesday 21st April 2010</strong></p>
-<p>James Cook <br>
-"Nets and filters II"   </p>
-</li>
-<li>
-<p><strong>Wednesday 28th April 2010</strong></p>
-<p>Departmental Awards Ceremony in MSB 328   </p>
-</li>
-<li>
-<p><strong>Wednesday 5th May 2010</strong></p>
-<p>David Covert <br>
-"Kloosterman sums and applications to Fourier analysis over finite fields"   </p>
-</li>
-<li>
-<p><strong>Wednesday 12th May 2010</strong></p>
-<p>Meeting cancelled   </p>
-</li>
-<li>
-<p><strong>Wednesday 19th May 2010</strong></p>
-<p>David Covert <br>
-"A Furstenberg-Katznelson-Weiss type theorem on (d+1)-point configurations in finite fields"   </p>
-</li>
-</ul>
-<hr>
-<h2>Graduate Student Seminar Archive</h2>
-<ul>
-<li><a href="http://soumyadsanyal.com/pages/graduate-seminar-fall-2009.html">Graduate Student Seminar Fall 2009 </a> </li>
-<li><a href="http://soumyadsanyal.com/pages/graduate-seminar-spring-2009.html">Graduate Student Seminar Spring 2009 </a> </li>
-</ul>
-<hr>
-            </div>
+        <div id="content">            <h4 class="date">Feb 03, 2017</h4>
 
+            <article class="post">
+                <h2 class="title">
+                    <a href="http://soumyadsanyal.com/logistic-regression-and-perfect-separation.html" rel="bookmark" title="Permanent Link to &quot;Logistic regression and perfect separation&quot;">Logistic regression and perfect separation</a>
+                </h2>
+
+                <p>In this and a couple of other posts I'm taking notes on a
+<a href="https://ora.ox.ac.uk/objects/uuid:8f9ee0d0-d78e-4101-9ab4-f9cbceed2a2a">thesis</a>
+by Kjell Konis that came to my attention in an issue in the
+<a href="https://github.com/statsmodels/statsmodels">statsmodels</a> project.</p>
+<p>The paper's main contribution is a linear programming technique to detect when
+a dataset in <span class="math">\(\mathbb{R}^d\)</span> can be separated by a hyperplane, the issue being
+that when it can, the maximum likelihood estimate for the parameter vector
+<span class="math">\(\beta\)</span> does not exist, and iterative methods for estimating it will not
+converge. The author has committed an implementation of this technique to the R project, 
+and a contribution to issue <a href="https://github.com/statsmodels/statsmodels/issues/1705">#1705</a> 
+could provide an implementation in the statsmodels project. At the moment there is a
+<a href="https://github.com/statsmodels/statsmodels/blob/master/statsmodels/discrete/discrete_model.py#L181">heuristic check</a>
+for this a couple of binary models that seems to raise an exception when the
+model fit values are <em>too</em> close to the data, but I gather it would be good to have a
+formal test available.</p>
+<p>The paper introduces the technique in the setting of estimating a logistic
+regression model in the presence of complete or quasi separation. A quick
+review of what the logistic regression model is: assuming an experiment where
+the outcome <span class="math">\(y\)</span> is binary, with <span class="math">\(Pr(y=1) = \pi\)</span>, we estimate the log-odds as a
+linear function of the data <span class="math">\(X\)</span>: $ log(\frac{\pi}{1-\pi}) = \beta^TX $</p>
+<p>A standard way to estimate the parameter vector <span class="math">\(\beta\)</span> here is to use the
+maximum likelihood estimate, which can be quickly derived.</p>
+<h4>Maximum likelihood estimate for logistic regression models</h4>
+<p>The first step here is to compute the likelihood function, which is essentially
+given by the probability density function, but viewed as a function of the
+model parameters, with the exogeneous data held fixed (in training). </p>
+<p>In this case the dataset, <span class="math">\(\{ (y_i, X_i) \}\)</span>, has a dependent variable that
+takes only the values <span class="math">\(1\)</span> with probability <span class="math">\(\pi_i\)</span>, or <span class="math">\(0\)</span> with probability
+<span class="math">\(1-\pi_i\)</span>, where for the moment <span class="math">\(\pi_i\)</span> is the model estimate for row <span class="math">\(i\)</span> in
+the dataset. This pdf is basically that of a <span class="math">\(Bernoulli(\pi_i)\)</span> trial, and can
+be written more compactly as <span class="math">\(f(y_i; \pi_i) = \pi_i^{y_i}(1-\pi_i)^{1-y_i}\)</span>.
+In particular the joint pdf is then <span class="math">\(f(y; \pi) = \Pi_i
+\pi_i^{y_i}(1-\pi_i)^{1-y_i}\)</span>.</p>
+<p>Accordingly, the likelihood of the sample given parameters <span class="math">\(\pi\)</span> is given by</p>
+<p><span class="math">\(L(\pi; y) = \Pi_i \pi_i^{y_i}(1-\pi_i)^{1-y_i}\)</span>, </p>
+<p>and the log-likelihood is </p>
+<p><span class="math">\(l(\pi; y) = \sum_{i} y_ilog(\pi_i) + (1-y_i)log(1-\pi_i)\)</span>.</p>
+<p>Given that we estimate the equation</p>
+<p><span class="math">\(log(\frac{\pi_i}{1-\pi_i}) = \beta^TX_i\)</span>,</p>
+<p>we can rewrite the log-likelihood by using the following substitution:</p>
+<p><span class="math">\(\pi_i = \frac{1}{1+e^{-\beta^TX_i}}\)</span></p>
+<p>to get that</p>
+<p>$l(\beta; y) = \sum_{i} -y_ilog(1+e^{-\beta^TX_i}) + log(e^{-\beta^TX_i}) -
+log(1+e^{-\beta^TX_i}) + y_i\beta^TX_i + y_ilog(1+e^{-\beta^TX_i}) $</p>
+<p>or</p>
+<p>$l(\beta; y) = \sum_{i}  y_i\beta^TX_i - log(1+e^{\beta^TX_i}) $</p>
+<p>It appears that there is no general closed-form solution to the problem </p>
+<p><span class="math">\(\frac{\partial l(\beta; y, X)}{\partial \beta}=0\)</span></p>
+<p>and that the solution is generally found using iterative methods such as
+iteratively reweighted least squares, or Newton's method.</p>
+<h4>Types of perfect separation</h4>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="http://soumyadsanyal.com/logistic-regression-and-perfect-separation.html">posted at 07:00</a>
+                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
+                </div>
+            </article>
             <div class="clear"></div>
             <footer>
                 <p>

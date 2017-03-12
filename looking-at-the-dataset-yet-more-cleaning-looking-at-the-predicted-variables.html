@@ -14,8 +14,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1110,7 +1110,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2539,7 +2538,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3030,7 +3028,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8761,6 +8758,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8963,8 +8963,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8987,6 +8993,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9123,6 +9139,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9212,6 +9231,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9256,6 +9278,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9552,6 +9577,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9572,11 +9598,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11247,7 +11268,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11559,6 +11580,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11572,6 +11594,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11634,8 +11659,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11646,9 +11673,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 </style>
 
@@ -11870,7 +11899,9 @@ jQuery(document).ready(function($) {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>/home/soumya/research/insight/insight_project/data
 </pre>
@@ -11897,7 +11928,9 @@ jQuery(document).ready(function($) {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>2013_consolidated_frame.csv     dsm_data_cleaned_columns.pkl
 2013_test_with_dummies.pkl      dsm_data.csv
@@ -11952,7 +11985,9 @@ jQuery(document).ready(function($) {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[5]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12041,7 +12076,9 @@ Pop the last entry from the column names
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12232,7 +12269,9 @@ Pop the last entry from the column names
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12452,7 +12491,9 @@ Pop the last entry from the column names
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[11]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12545,7 +12586,9 @@ Pop the last entry from the column names
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[14]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12619,7 +12662,9 @@ Pop the last entry from the column names
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[15]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12666,7 +12711,9 @@ Name: HIGH_CHOLESTEROL_DIAGNOSIS_(&gt;17), dtype: float64</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[16]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12746,7 +12793,9 @@ Value     Definition
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[17]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12755,7 +12804,9 @@ Value     Definition
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -13182,7 +13233,9 @@ JElqwCJKkiSpAYsoSZKkBiyiJEmSGvj/YNgvPleLB6oAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -13651,7 +13704,9 @@ yVTG7ODOlwAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[25]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13698,7 +13753,9 @@ Name: TOTAL_OFFICE-BASED_EXP_13, dtype: float64</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[26]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[26]:</div>
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -13894,7 +13951,9 @@ Name: TOTAL_OFFICE-BASED_EXP_13, dtype: float64</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[&#39;AGE_AS_OF_12/31/13_(EDITED/IMPUTED)&#39;, &#39;SEX&#39;, &#39;RACE/ETHNICITY_(EDITED/IMPUTED)&#39;, &#39;MARITAL_STATUS-12/31/13_(EDITED/IMPUTED)&#39;, &#34;FAMILY&#39;S_TOTAL_INCOME&#34;, &#39;ADULT_BODY_MASS_INDEX_(&gt;17)_-_RD_5/3&#39;, &#39;HIGH_BLOOD_PRESSURE_DIAG_(&gt;17)&#39;, &#39;CORONARY_HRT_DISEASE_DIAG_(&gt;17)&#39;, &#39;AGE_OF_DIAGNOSIS-HIGH_BLOOD_PRESSURE&#39;, &#39;MULT_DIAG_HIGH_BLOOD_PRESS_(&gt;17)&#39;, &#39;AGE_OF_DIAGNOSIS-CORONARY_HEART_DISEASE&#39;, &#39;ANGINA_DIAGNOSIS_(&gt;17)&#39;, &#39;AGE_OF_DIAGNOSIS-ANGINA&#39;, &#39;HEART_ATTACK_(MI)_DIAG_(&gt;17)&#39;, &#39;AGE_OF_DIAGNOSIS-HEART_ATTACK(MI)&#39;, &#39;OTHER_HEART_DISEASE_DIAG_(&gt;17)&#39;, &#39;AGE_OF_DIAGNOSIS-OTHER_HEART_DISEASE&#39;, &#39;STROKE_DIAGNOSIS_(&gt;17)&#39;, &#39;AGE_OF_DIAGNOSIS-STROKE&#39;, &#39;EMPHYSEMA_DIAGNOSIS_(&gt;17)&#39;, &#39;AGE_OF_DIAGNOSIS-EMPHYSEMA&#39;, &#39;CHRONC_BRONCHITS_LAST_12_MTHS_(&gt;17)-R3/1&#39;, &#39;CHRONC_BRONCHITS_LAST_12_MTHS_(&gt;17)-R5/3&#39;, &#39;HIGH_CHOLESTEROL_DIAGNOSIS_(&gt;17)&#39;, &#39;AGE_OF_DIAGNOSIS-HIGH_CHOLESTEROL&#39;, &#39;CANCER_DIAGNOSIS_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_BLADDER_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_BREAST_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_CERVIX_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_COLON_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_LUNG_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_LYMPHOMA_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_MELANOMA_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_OTHER_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_PROSTATE_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_SKIN-NONMELANO_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED-SKIN-UNKNOWN_TYPE_(&gt;17)&#39;, &#39;CANCER_DIAGNOSED_-_UTERUS_(&gt;17)&#39;, &#39;DIABETES_DIAGNOSIS_(&gt;17)&#39;, &#39;AGE_OF_DIAGNOSIS-DIABETES&#39;, &#39;JOINT_PAIN_LAST_12_MONTHS_(&gt;17)_-_RD_3/1&#39;, &#39;JOINT_PAIN_LAST_12_MONTHS_(&gt;17)_-_RD_5/3&#39;, &#39;ARTHRITIS_DIAGNOSIS_(&gt;17)&#39;, &#39;AGE_OF_DIAGNOSIS-ARTHRITIS&#39;, &#39;ASTHMA_DIAGNOSIS&#39;, &#39;AGE_OF_DIAGNOSIS-ASTHMA&#39;, &#39;DOES_PERSON_STILL_HAVE_ASTHMA-RD3/1&#39;, &#39;DOES_PERSON_STILL_HAVE_ASTHMA_-_RD_5/3&#39;, &#39;ASTHMA_ATTACK_LAST_12_MOS_-_RD3/1&#39;, &#39;USED_ACUTE_PRES_INHALER_LAST_3_MOS-RD5/3&#39;, &#39;USED&gt;3ACUTE_CN_PRES_INH_LAST_3_MOS-RD5/3&#39;, &#39;EVER_USED_PREV_DAILY_ASTHMA_MEDS_-RD_5/3&#39;, &#39;NOW_TAKE_PREV_DAILY_ASTHMA_MEDS_-_RD_5/3&#39;, &#39;HAVE_PEAK_FLOW_METER_AT_HOME_-_RD_5/3&#39;, &#39;EVER_USED_PEAK_FLOW_METER_-_RD_5/3&#39;, &#39;ADHDADD_DIAGNOSIS_(5-17)&#39;, &#39;AGE_OF_DIAGNOSIS-ADHD/ADD&#39;, &#39;PREGNANT_DURING_REF_PERIOD_-_RD_3/1&#39;, &#39;LIMITATION_IN_PHYSICAL_FUNCTIONING-RD3/1&#39;, &#39;EMPLOYMENT_STATUS_RD_3/1&#39;, &#39;HAS_MORE_THAN_ONE_JOB_RD_3/1_INT_DATE&#39;, &#39;SELF-EMPLOYED_AT_RD_3/1_CMJ&#39;, &#39;CHOICE_OF_HEALTH_PLANS_AT_RD_3/1_CMJ&#39;, &#39;INDUSTRY_GROUP_RD_3/1_CMJ&#39;, &#39;UNION_STATUS_AT_RD_3/1_CMJ&#39;, &#39;OCCUPATION_GROUP_RD_3/1_CMJ&#39;, &#39;HEALTH_INSUR_HELD_FROM_RD_3/1_CMJ_(ED)&#39;, &#39;HEALTH_INSUR_OFFERED_BY_RD_3/1_CMJ_(ED)&#39;, &#39;EMPLOYER_OFFERS_HEALTH_INS_RD_3/1_CMJ&#39;, &#39;FULL_YEAR_INSURANCE_COVERAGE_STATUS_2013&#39;, &#39;ANYONE_IN_RU_HAVE_FSA_-_R3/1&#39;, &#39;#_WKS/MON_WOUT_HLTH_INS_PRV_YR-PN_18_ONL&#39;, &#39;PRIVATE_INSURANCE_ANY_TIME_IN_R5/R3&#39;, &#39;PUBLIC_INS_ANY_TIME_IN_R5/R3&#39;, &#39;INSURED_ANY_TIME_IN_R3/1&#39;, &#39;ANY_TIME_COVERAGE_BY_STATE_INS_-_R3/1&#39;, &#39;#_OFFICE-BASED_PROVIDER_VISITS_13&#39;, &#39;#_OUTPATIENT_DEPT_PROVIDER_VISITS_13&#39;, &#39;#_EMERGENCY_ROOM_VISITS_13&#39;, &#39;#_NIGHTS_IN_HOSP_FOR_DISCHARGES_2013&#39;, &#39;FINAL_PERSON_WEIGHT_2013&#39;, &#39;TOTAL_OFFICE-BASED_EXP_13&#39;, &#39;TOTAL_OUTPATIENT_PROVIDER_EXP_13&#39;, &#39;TOT_HOSP_IP_FACILITY_+_DR_EXP_13&#39;, &#39;TOTAL_ER_FACILITY_+_DR_EXP_13&#39;, &#39;CENSUS_REGION_AS_OF_12/31/13&#39;, &#39;EDUCATION_RECODE_(EDITED)&#39;]
 </pre>
@@ -13941,7 +14000,9 @@ Name: TOTAL_OFFICE-BASED_EXP_13, dtype: float64</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>There were 87 variables to start.
 There were 87 variables at the end.
@@ -14015,7 +14076,9 @@ There were 87 variables at the end.
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[32]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[32]:</div>
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -14205,7 +14268,9 @@ There were 87 variables at the end.
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[33]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[33]:</div>
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -14277,7 +14342,9 @@ There were 87 variables at the end.
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[34]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[34]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -14322,7 +14389,9 @@ dtype: float64</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[35]:</div>
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -14492,7 +14561,9 @@ dtype: float64</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>AGE_AS_OF_12/31/13_(EDITED/IMPUTED) 	 54
 SEX 	 MALE
@@ -14609,7 +14680,9 @@ EDUCATION_RECODE_(EDITED) 	 9 - 12TH GRADE, NO HS DIPLOMA OR GED
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>AGE_AS_OF_12/31/13_(EDITED/IMPUTED) 	 67
 SEX 	 FEMALE
@@ -14726,7 +14799,9 @@ EDUCATION_RECODE_(EDITED) 	 BEYOND HS,COLLEGE(NO 4YR DEG),ASSOC DEG
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>AGE_AS_OF_12/31/13_(EDITED/IMPUTED) 	 10
 SEX 	 MALE
@@ -14843,7 +14918,9 @@ EDUCATION_RECODE_(EDITED) 	 LESS THAN/EQUAL TO 8TH GRADE
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>AGE_AS_OF_12/31/13_(EDITED/IMPUTED) 	 68
 SEX 	 FEMALE
@@ -14970,7 +15047,9 @@ EDUCATION_RECODE_(EDITED) 	 BEYOND HS,COLLEGE(NO 4YR DEG),ASSOC DEG
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15200,7 +15279,9 @@ do3BsdknIQAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15450,7 +15531,9 @@ TwYrzqZFAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15734,7 +15817,9 @@ SVIHWaRJkiR1kEWaJElSB1mkSZIkddD/D/WeftvARmonAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -16045,7 +16130,9 @@ k0QzMzMzG+H/AwsNVh+8kI/xAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>There are 240259742 people in the range 0 to 1000
 There are 49350962 people in the range 1000 to 3000
@@ -16086,7 +16173,9 @@ There are 8539737 people in the range 5000 to 10000
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -16397,7 +16486,9 @@ QmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>There are 4452543 people in the range 10000 to 50000
 </pre>
@@ -16435,7 +16526,9 @@ QmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -16733,7 +16826,9 @@ xgBQkiRpxBgASpIkjRgDQEmSpBFjAChJkjRi/j++/TnREHAxPQAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>There are 181340 people in the range 50000 to 250000
 </pre>
@@ -16798,7 +16893,9 @@ xgBQkiRpxBgASpIkjRgDQEmSpBFjAChJkjRi/j++/TnREHAxPQAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[52]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[52]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -16807,7 +16904,9 @@ xgBQkiRpxBgASpIkjRgDQEmSpBFjAChJkjRi/j++/TnREHAxPQAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17008,14 +17107,18 @@ cOM1LH9/awAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>There are 310041464 people in the range 0 to 1000
 </pre>
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17269,7 +17372,9 @@ NEmSpBlkkiZJkjSDTNIkSZJm0P8Dxj/Wtegk5VwAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>There are 23065896 people in the range 1 to 1000
 There are 300065999 people in the range 0 to 200
@@ -17277,7 +17382,9 @@ There are 300065999 people in the range 0 to 200
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17607,7 +17714,9 @@ evO2hwAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17939,7 +18048,9 @@ YII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -18239,7 +18350,9 @@ AABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>There are 5603240 people in the range 1000 to 10000
 There are 1168142 people in the range 3000 to 10000
@@ -18278,7 +18391,9 @@ There are 1168142 people in the range 3000 to 10000
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -18580,7 +18695,9 @@ twvwg/JJ4VvKOJYAr4+I+2g+aPGytYw9u27XitTHA2cA2wMvAr6YmVev5XEl6UGiaW2RJHWLiIdn
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>There are 77278 people in the range 10000 to 50000
 </pre>
@@ -18632,7 +18749,9 @@ twvwg/JJ4VvKOJYAr4+I+2g+aPGytYw9u27XitTHA2cA2wMvAr6YmVev5XEl6UGiaW2RJHWLiIdn
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[61]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[61]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -18680,7 +18799,9 @@ Name: TOT_HOSP_IP_FACILITY_+_DR_EXP_13, dtype: float64</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -18927,7 +19048,9 @@ yCRNkiRpCpmkSZIkTaH/H7wRLSsPqYCfAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -19243,7 +19366,9 @@ aQbZyJMkSZpB/w8QRhVjBaGF1AAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -19553,7 +19678,9 @@ QUmSpIqZDEqSJFXMZFCSJKli/z8wGPj6tYCxIAAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -19860,7 +19987,9 @@ RK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>There are 3910489 people in the range 20000 to 50000
 </pre>
@@ -19897,7 +20026,9 @@ RK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -20195,7 +20326,9 @@ SRIA/z/Z+B/2xLyZgwAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>There are 1381075 people in the range 50000 to 350000
 </pre>
@@ -20247,7 +20380,9 @@ SRIA/z/Z+B/2xLyZgwAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[70]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[70]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -20295,7 +20430,9 @@ Name: TOTAL_ER_FACILITY_+_DR_EXP_13, dtype: float64</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -20539,7 +20676,9 @@ kzRJkqQZZJImSZI0g0zSJEmSZpBJmiRJ0gwySZMkSZpB/z/Qa/O0AamQ3gAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -20909,7 +21048,9 @@ GCeAZmZmZhXjBNDMzMysYv4/vPEDKbBE7lcAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -21463,7 +21604,9 @@ RK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -21800,7 +21943,9 @@ zMzMWjhJNDMzM7MWThLNzMzMrIWTRDMzMzNr8f8BzNoH84Lt8DwAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -22121,7 +22266,9 @@ G4KSJElDyoagJEnSkLIhKEmSNKRsCEqSJA0pG4KSJElD6v8BQCPxjbX7qooAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -22409,7 +22556,9 @@ TOwkSZImhImdJEnShPj/AaIZ30bER/ERAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -22997,7 +23146,9 @@ OI7jOI7jZPAOsuM4juM4juNk8A6y4ziO4ziO42TwDrLjOI7jOI7jZPAOsuM4juM4juNk8A6y4ziO
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -23537,7 +23688,9 @@ McYYY4wxFf4/NFnEhg4C85UAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -24039,7 +24192,10 @@ IiIiIqJDBsgRERERER0yQI6IiIiI6PD/AeWYpsKfCgRwAAAAAElFTkSuQmCC
 
 </div>
 </div>
-</div></p>
+</div>
+ 
+
+</p>
                 <div class="clear"></div>
 
                 <div class="info">
