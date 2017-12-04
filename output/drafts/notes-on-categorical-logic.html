@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-    <title>Soumya D. Sanyal | Introducing Insight</title>
+    <title>Soumya D. Sanyal | Notes on categorical logic</title>
     <link rel="shortcut icon" type="image/png" href="http://soumyadsanyal.com/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="http://soumyadsanyal.com/favicon.ico">
 
@@ -11835,25 +11835,80 @@ jQuery(document).ready(function($) {
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">            <h4 class="date">Dec 20, 2015</h4>
+        <div id="content">            <h4 class="date">Dec 04, 2017</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="http://soumyadsanyal.com/introducing-insight.html" rel="bookmark" title="Permanent Link to &quot;Introducing Insight&quot;">Introducing Insight</a>
+                    <a href="http://soumyadsanyal.com/drafts/notes-on-categorical-logic.html" rel="bookmark" title="Permanent Link to &quot;Notes on categorical logic&quot;">Notes on categorical logic</a>
                 </h2>
 
-                <p>In September of this year, I took a leave of absence to do the <a href="http://www.insightdatascience.com">Insight Data Science</a> program in New York City. Insight is a postdoctoral program that helps Fellows to transition from academia to doing data science in industry.</p>
-<p>I can’t say enough good things about the Insight program, but let me at least offer a few impressions.</p>
-<p>The minimum requirements to enter include a Ph.D., and the program tends to accept applicants who are already well prepared to be data scientists (perhaps 90-95% of the way there), and polishes them for the last mile of the transition. The program is fairly selective; we were told that for the September session, Insight received over 900 applicants, and accepted about 70 people. While this is certainly not to say that people who don’t make it into Insight aren’t awesome, the selectiveness does ensure a talented cohort, and my fellow Fellows (this term being a running pun throughout the program) were one of the best things about the program.</p>
-<p>Once in the program, Fellows take a week or so to decide on what they’ll do for their Insight project, which is a data science project that they’ll showcase to mentoring companies towards the end of the program. We’re encouraged to try working on something that is do-able in a 2-3 week timeframe, but that is also impactful in some way. There is also the option to do one of a handful of consulting projects, which consist of well defined projects that real, existing startup companies need to get done, but don’t have the manpower or funding to implement.</p>
-<p>We then spend the next 2-3 weeks implementing our chosen projects in 1 week iterations (affectionately called MVP’s - as used in agile development and popularized by Eric Ries). Not all of our time is available for developing our projects; during this period we are visited by a lot of mentor companies that are interested in telling us about themselves, and what they do with data scientists. I think I slept an average of 4 hours a night during these weeks, and I definitely pulled a couple of all-nighters.</p>
-<p>In the final phase of the program, we pivot to demo-ing at mentor companies, as well as prepping for the interview stack that most companies have for data scientists. We’ve been informed that that the bar for admission to be a practicing data scientist in industry has risen recently, and that the interview loops have become more rigorous and demanding at a lot of companies. This makes a lot of sense: with <a href="http://www.thedataincubator.com">competitor programs</a> setting up shop, there’s been an increase in the supply of candidates like us into the data scientist market. The rapid creation of <a href="http://www.skilledup.com/articles/list-data-science-bootcamps">other bootcamps</a> has also increased the supply of data scientists with different, including non-Ph.D., backgrounds. Finally, the emergence of many university-based data science and analytics masters programs (here’s <a href="http://bit.ly/1TapxRa">one</a> example close to home that I’ve helped to build) promises to channel yet more talent into the marketplace.</p>
-<p>Challenge accepted.</p>
+                <h3 id="motivation">Motivation</h3>
+<p>A refresher for myself – not really for public consumption – on categories, type theory, and programming languages.</p>
+<h3 id="categories">Categories</h3>
+<p>A category consists of the following data:</p>
+<blockquote>
+<p><span class="math inline">𝒞 = (𝒞<sub>0</sub>, 𝒞<sub>1</sub>)</span></p>
+</blockquote>
+<p>where the elements of <span class="math inline">𝒞<sub>0</sub></span> are primitive types, and the elements of <span class="math inline">𝒞<sub>1</sub></span> are of type <span class="math inline">𝒞<sub>0</sub> → 𝒞<sub>0</sub></span>.</p>
+<p>The interpretation of <span class="math inline">𝒞<sub>0</sub></span> and <span class="math inline">𝒞<sub>1</sub></span> are as the objects and morphisms of the category <span class="math inline">𝒞</span>.</p>
+<p>We’ll use the notation <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span> to indicate the section of <span class="math inline">𝒞<sub>1</sub></span> consisting of arrows from <span class="math inline"><em>x</em> → <em>y</em></span> for <span class="math inline"><em>x</em>, <em>y</em> ∈ 𝒞<sub>0</sub></span>.</p>
+<p>The data <span class="math inline">(𝒞<sub>0</sub>, 𝒞<sub>1</sub>)</span> are required to respect the following specifications:</p>
+<blockquote>
+<ol type="1">
+<li>for all objects <span class="math inline"><em>x</em> ∈ 𝒞<sub>0</sub></span>, there is a unique arrow <span class="math inline"><em>i</em><sub><em>x</em></sub></span> in <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>x</em>)</span>, which we also abbreviate as <span class="math inline"><em>x</em></span>, such that for all objects <span class="math inline"><em>y</em> ∈ 𝒞<sub>0</sub></span>, the following two conditions hold:</li>
+</ol>
+<ul>
+<li>for all arrows <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span>, the equality <span class="math inline"><em>f</em> ∘ <em>i</em><sub><em>x</em></sub> = <em>f</em></span> holds, and</li>
+<li>for all arrows <span class="math inline"><em>g</em> ∈ 𝒞<sub>1</sub>(<em>y</em>, <em>x</em>)</span>, the equality <span class="math inline"><em>i</em><sub><em>x</em></sub> ∘ <em>g</em> = <em>g</em></span> holds,</li>
+</ul>
+</blockquote>
+<p>and</p>
+<blockquote>
+<ol start="2" type="1">
+<li>for all objects <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ 𝒞<sub>0</sub></span>, and for all arrows <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>y</em>, <em>z</em>)</span> and <span class="math inline"><em>g</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span>, the composition <span class="math inline"><em>g</em> ∘ <em>f</em></span> exists in <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>z</em>)</span>.</li>
+</ol>
+</blockquote>
+<h3 id="functors">Functors</h3>
+<p>A functor between two categories <span class="math inline">𝒞</span> and <span class="math inline">𝒟</span> is a pair of maps <span class="math inline">ℱ = (ℱ<sub>0</sub>, ℱ<sub>1</sub>)</span>, with each map having the following types:</p>
+<blockquote>
+<ol type="1">
+<li><span class="math inline">ℱ<sub>0</sub> : 𝒞<sub>0</sub> → 𝒟<sub>0</sub></span></li>
+<li><span class="math inline">ℱ<sub>1</sub> : 𝒞<sub>1</sub> → 𝒟<sub>1</sub></span></li>
+</ol>
+</blockquote>
+<p>that respect the following conditions:</p>
+<blockquote>
+<ol type="1">
+<li>for all objects <span class="math inline"><em>x</em> ∈ 𝒞<sub>0</sub></span>, the equality <span class="math inline">ℱ<sub>1</sub>(<em>i</em><sub><em>x</em></sub>)=<em>i</em><sub>ℱ<sub>0</sub>(<em>x</em>)</sub></span> holds in <span class="math inline">𝒟<sub>1</sub>(<em>x</em>, <em>x</em>)</span>, and</li>
+<li>for all objects <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ 𝒞<sub>0</sub></span>, and <span class="math inline">∀<em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>),∀<em>g</em> ∈ 𝒞<sub>1</sub>(<em>y</em>, <em>z</em>)</span>, we have <span class="math inline">ℱ<sub>1</sub>(<em>g</em>∘<sub>𝒞</sub><em>f</em>)=ℱ<sub>1</sub>(<em>g</em>)∘<sub>𝒟</sub>ℱ<sub>1</sub>(<em>f</em>)</span>.</li>
+</ol>
+</blockquote>
+<h3 id="natural-transformations">Natural transformations</h3>
+<p>Given two functors <span class="math inline">ℱ</span> and <span class="math inline">𝒢</span> between a common source <span class="math inline">𝒞</span> and target category <span class="math inline">𝒟</span>, a natural transformation <span class="math inline">𝓉</span> is a family of maps <span class="math inline">{𝓉(<em>x</em>):𝒞(<em>x</em>)→𝒟(<em>x</em>)|<em>x</em> ∈ 𝒞<sub>0</sub>}</span>, implementing a sort of conjugation between the images of <span class="math inline">ℱ</span> and <span class="math inline">𝒢</span>, respecting the induced arrows in the images of each functor, that implements a sort of binary relation on all functors <span class="math inline">𝒞 → 𝒟</span>.</p>
+<p>Let’s be more precise. Suppose we have two categories <span class="math inline">(𝒞<sub>0</sub>, 𝒞<sub>1</sub>)</span> and <span class="math inline">(𝒟<sub>0</sub>, 𝒟<sub>1</sub>)</span>, and two functors between them, (<span class="math inline">ℱ<sub>0</sub>, ℱ<sub>1</sub>)</span> and <span class="math inline">(𝒢<sub>0</sub>, 𝒢<sub>1</sub>)</span>. A natural transformation between <span class="math inline">ℱ</span> and <span class="math inline">𝒢</span> is a collection of maps</p>
+<blockquote>
+<p><span class="math inline">{𝓉(<em>x</em>):ℱ<sub>0</sub>(<em>x</em>)→𝒢<sub>0</sub>(<em>x</em>)|<em>x</em> ∈ 𝒞<sub>0</sub>},</span></p>
+</blockquote>
+<p>that implements the following property for all <span class="math inline"><em>x</em>, <em>y</em> ∈ 𝒞<sub>0</sub></span> and for all <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span>:</p>
+<blockquote>
+<p><span class="math inline">𝓉(<em>y</em>)∘ℱ<sub>1</sub>(<em>f</em>)=𝒢<sub>1</sub>(<em>f</em>)∘𝓉(<em>x</em>)</span> in <span class="math inline">𝒟<sub>1</sub>(<em>x</em>, <em>y</em>)</span>.</p>
+</blockquote>
+<h3 id="examples-of-categories">Examples of categories</h3>
+<p>To fix ideas, and develop some facility with canonical examples and counterexamples, it is helpful to have a library of examples at hand. In this section let’s list some basic examples of categories, for concreteness.</p>
+<ol type="1">
+<li>Discrete categories. A category <span class="math inline">𝒞</span> with objects <span class="math inline">𝒞<sub>0</sub></span> is <em>discrete</em> if the only arrows in its hom-sets are the required identities, and the composition law vacuously holds. So, <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span> is empty if <span class="math inline"><em>x</em> ≠ <em>y</em></span> and <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>x</em>)=<em>x</em></span> for all <span class="math inline"><em>x</em> ∈ 𝒞<sub>0</sub></span>.</li>
+<li>Monoids. This is an important example to grasp, for e.g. the <code>algebird</code> library we’ll be looking into later. A monoid is a category <span class="math inline">ℳ</span> with exactly one object <span class="math inline"><em>m</em></span>. This means that the monoid is determined by the set <span class="math inline">ℳ<sub>1</sub>(<em>m</em>, <em>m</em>)</span> and the composition law, which interprets the monoid product <span class="math inline"><em>M</em> × <em>M</em> → <em>M</em></span>, inheriting associativity from the composition law and the identity <span class="math inline"><em>i</em><sub><em>m</em></sub></span>. Also, keep in mind that for any category <span class="math inline">𝒞</span> whatsoever and any object <span class="math inline"><em>c</em> ∈ 𝒞<sub>0</sub></span>, the homset <span class="math inline">𝒞<sub>1</sub>(<em>c</em>, <em>c</em>)</span> determines a monoid.</li>
+<li>Groups. A group is a category <span class="math inline">𝒢</span> with exactly one object <span class="math inline"><em>g</em></span>, where every arrow <span class="math inline"><em>f</em></span> in the homset <span class="math inline">𝒢<sub>1</sub>(<em>g</em>, <em>g</em>)</span> has a two-sided inverse.</li>
+<li>Matrices. Suppose <span class="math inline"><em>K</em></span> is a commutative ring. The set <span class="math inline">𝕄(<em>K</em>)</span> of rectangular matrices <span class="math inline"><em>A</em></span> with entries in <span class="math inline"><em>K</em></span> is a category <span class="math inline">ℳ(<em>K</em>)</span> in the following way. The objects of <span class="math inline">𝕄(<em>K</em>)</span> consist of the natural numbers <span class="math inline">ℕ</span>, and the homsets <span class="math inline">ℳ(<em>K</em>)<sub>1</sub>(<em>m</em>, <em>n</em>)</span> consist of all <span class="math inline"><em>K</em></span>-valued matrices of dimensions <span class="math inline"><em>m</em> × <em>n</em></span>. The composition law in <span class="math inline">ℳ(<em>K</em>)</span> is the usual matrix multiplication.</li>
+<li>Sets. Suppose <span class="math inline">𝕍</span> is a set of sets. Define <span class="math inline">ℰ(𝕍)</span> to be a category as follows. The objects are the sets <span class="math inline"><em>x</em> ∈ 𝕍</span>, and the homsets <span class="math inline">ℰ(𝕍)<sub>1</sub>(<em>x</em>, <em>y</em>)</span> consist of all functions <span class="math inline"><em>f</em> : <em>x</em> → <em>y</em></span>. The composition law is composition of functions.</li>
+<li>Preorders. This is an important example for logic and programming. A preorder is a category <span class="math inline">𝒫</span> such that for any pair of objects <span class="math inline"><em>p</em>, <em>q</em></span> in <span class="math inline">𝒫<sub>0</sub></span>, there is at most one arrow in the homset <span class="math inline">𝒫<sub>1</sub>(<em>p</em>, <em>q</em>)</span>.</li>
+<li>Ordinal numbers. An ordinal number is a category <span class="math inline">𝒪(<em>n</em>)</span> that consists of the objects <span class="math inline">𝒪(<em>n</em>)<sub>0</sub> = {<em>m</em>|<em>m</em> ∈ ℕ ∪ {0},<em>m</em> ≤ <em>n</em>}</span>, and with the only nonempty nontrivial homsets being the singletons <span class="math inline">𝒪(<em>n</em>)<sub>1</sub>(<em>m</em>, <em>m</em> + 1)={<em>m</em> → <em>m</em> + 1</span> for each <span class="math inline"><em>m</em> ∈ 𝒪(<em>n</em>)<sub>0</sub>}</span>. That is, each ordinal number implements the preorder category, and is a special case of it. The unique ordinal succeeding all the finite ordinals is the category <span class="math inline">𝒪(<em>ω</em>)</span> whose objects are <span class="math inline">{<em>n</em>|<em>n</em> ∈ ℕ ∪ {0}}</span> and whose only nonempty nontrivial homsets are the singletons <span class="math inline"><em>O</em>(<em>ω</em>)<sub>1</sub>(<em>m</em>, <em>m</em> + 1)</span>.</li>
+</ol>
 
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="http://soumyadsanyal.com/introducing-insight.html">posted at 09:20</a>
+                    <a href="http://soumyadsanyal.com/drafts/notes-on-categorical-logic.html">posted at 07:00</a>
                     &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
                 </div>
             </article>
