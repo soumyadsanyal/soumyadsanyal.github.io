@@ -11843,7 +11843,7 @@ jQuery(document).ready(function($) {
                 </h2>
 
                 <h3 id="what-this-is">What this is</h3>
-<p>A refresher for myself on categories, type theory, and programming languages. Mostly following Maclane and Lambek-Scott for these next few posts. I’m not editing very carefully, so there will be mistakes.</p>
+<p>A casual refresher for myself on categories, type theory, and programming languages. Mostly following Maclane and Lambek-Scott for these next few posts. This is mostly a rough brain dump, and I’m not editing very carefully, so there will be mistakes. In the following posts I’m going to go back and forth between thinking about categories and types, and interpreting concepts from one in the other. A likely reference on the computational side of things is Rydeheard-Burstall, and I’ll try my hand at implementing some of these ideas in both <code>ML</code> and <code>Haskell</code>.</p>
 <h3 id="categories">Categories</h3>
 <p>A category consists of the following data:</p>
 <blockquote>
@@ -11865,7 +11865,7 @@ jQuery(document).ready(function($) {
 <p>and</p>
 <blockquote>
 <ol start="2" type="1">
-<li>for all objects <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ 𝒞<sub>0</sub></span>, and for all arrows <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>y</em>, <em>z</em>)</span> and <span class="math inline"><em>g</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span>, the composition <span class="math inline"><em>g</em> ∘ <em>f</em></span> exists in <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>z</em>)</span>.</li>
+<li>for all objects <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ 𝒞<sub>0</sub></span>, and for all arrows <span class="math inline"><em>g</em> ∈ 𝒞<sub>1</sub>(<em>y</em>, <em>z</em>)</span> and <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span>, the composition <span class="math inline"><em>g</em> ∘ <em>f</em></span> exists in <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>z</em>)</span>.</li>
 </ol>
 </blockquote>
 <h3 id="functors">Functors</h3>
@@ -11880,16 +11880,16 @@ jQuery(document).ready(function($) {
 <blockquote>
 <ol type="1">
 <li>for all objects <span class="math inline"><em>x</em> ∈ 𝒞<sub>0</sub></span>, the equality <span class="math inline">ℱ<sub>1</sub>(<em>i</em><sub><em>x</em></sub>)=<em>i</em><sub>ℱ<sub>0</sub>(<em>x</em>)</sub></span> holds in <span class="math inline">𝒟<sub>1</sub>(<em>x</em>, <em>x</em>)</span>, and</li>
-<li>for all objects <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ 𝒞<sub>0</sub></span>, and <span class="math inline">∀<em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>),∀<em>g</em> ∈ 𝒞<sub>1</sub>(<em>y</em>, <em>z</em>)</span>, we have <span class="math inline">ℱ<sub>1</sub>(<em>g</em>∘<sub>𝒞</sub><em>f</em>)=ℱ<sub>1</sub>(<em>g</em>)∘<sub>𝒟</sub>ℱ<sub>1</sub>(<em>f</em>)</span>.</li>
+<li>for all objects <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ 𝒞<sub>0</sub></span>, and for all arrows <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span> and for all arrows <span class="math inline"><em>g</em> ∈ 𝒞<sub>1</sub>(<em>y</em>, <em>z</em>)</span>, we have <span class="math inline">ℱ<sub>1</sub>(<em>g</em>∘<sub>𝒞</sub><em>f</em>)=ℱ<sub>1</sub>(<em>g</em>)∘<sub>𝒟</sub>ℱ<sub>1</sub>(<em>f</em>)</span>.</li>
 </ol>
 </blockquote>
 <h3 id="natural-transformations">Natural transformations</h3>
 <p>Given two functors <span class="math inline">ℱ</span> and <span class="math inline">𝒢</span> between a common source <span class="math inline">𝒞</span> and target category <span class="math inline">𝒟</span>, a natural transformation <span class="math inline">𝓉</span> is a family of maps <span class="math inline">{𝓉(<em>x</em>):𝒟<sub>0</sub> → 𝒟<sub>0</sub>|<em>x</em> ∈ 𝒞<sub>0</sub>}</span>, implementing a sort of conjugation between the images of <span class="math inline">ℱ</span> and <span class="math inline">𝒢</span>, respecting the induced arrows in the images of each functor, that implements a sort of binary relation on all functors <span class="math inline">𝒞 → 𝒟</span>.</p>
-<p>Let’s be more precise. Suppose we have two categories <span class="math inline">(𝒞<sub>0</sub>, 𝒞<sub>1</sub>)</span> and <span class="math inline">(𝒟<sub>0</sub>, 𝒟<sub>1</sub>)</span>, and two functors between them, (<span class="math inline">ℱ<sub>0</sub>, ℱ<sub>1</sub>)</span> and <span class="math inline">(𝒢<sub>0</sub>, 𝒢<sub>1</sub>)</span>. A natural transformation between <span class="math inline">ℱ</span> and <span class="math inline">𝒢</span> is a collection of maps</p>
+<p>Let’s be more precise. Suppose we have two categories <span class="math inline">(𝒞<sub>0</sub>, 𝒞<sub>1</sub>)</span> and <span class="math inline">(𝒟<sub>0</sub>, 𝒟<sub>1</sub>)</span>, and two functors between them, (<span class="math inline">ℱ<sub>0</sub>, ℱ<sub>1</sub>)</span> and <span class="math inline">(𝒢<sub>0</sub>, 𝒢<sub>1</sub>)</span>. A natural transformation between <span class="math inline">ℱ</span> and <span class="math inline">𝒢</span> is a collection of arrows in <span class="math inline">𝒟<sub>1</sub></span>, indexed by the objects in <span class="math inline">𝒞<sub>0</sub></span>:</p>
 <blockquote>
-<p><span class="math inline">{𝓉(<em>x</em>):ℱ<sub>0</sub>(<em>x</em>)→𝒢<sub>0</sub>(<em>x</em>)|<em>x</em> ∈ 𝒞<sub>0</sub>},</span></p>
+<p><span class="math inline">{𝓉(<em>x</em>)∈𝒟<sub>1</sub>(ℱ<sub>0</sub>(<em>x</em>),𝒢<sub>0</sub>(<em>x</em>))|<em>x</em> ∈ 𝒞<sub>0</sub>},</span></p>
 </blockquote>
-<p>that implements the following property for all <span class="math inline"><em>x</em>, <em>y</em> ∈ 𝒞<sub>0</sub></span> and for all <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span>:</p>
+<p>that implements for all <span class="math inline"><em>x</em>, <em>y</em> ∈ 𝒞<sub>0</sub></span> and for all <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span>:</p>
 <blockquote>
 <p><span class="math inline">𝓉(<em>y</em>)∘ℱ<sub>1</sub>(<em>f</em>)=𝒢<sub>1</sub>(<em>f</em>)∘𝓉(<em>x</em>)</span> in <span class="math inline">𝒟<sub>1</sub>(ℱ<sub>0</sub>(<em>x</em>),𝒢<sub>0</sub>(<em>y</em>))</span>.</p>
 </blockquote>
