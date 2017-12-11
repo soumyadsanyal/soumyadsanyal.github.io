@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Soumya D. Sanyal | Articles by Soumya D. Sanyal</title>
+        <meta charset="utf-8" />
+    <title>Soumya D. Sanyal | The unreasonable effectiveness of type inference</title>
     <link rel="shortcut icon" type="image/png" href="http://soumyadsanyal.com/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="http://soumyadsanyal.com/favicon.ico">
 
@@ -11818,13 +11818,12 @@ jQuery(document).ready(function($) {
     <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
 
+
 </head>
 <body>
     <header>
         <nav>
             <ul>
-
-                <li class="ephemeral selected"><a href="http://soumyadsanyal.com/author/soumya-d-sanyal.html">Soumya D. Sanyal</a></li>
                 <li><a href="http://soumyadsanyal.com/">About</a></li>
                 <li><a href="http://soumyadsanyal.com/pages/write">Write</a></li>
                 <li><a href="http://soumyadsanyal.com/pages/talk">Talk</a></li>
@@ -11903,256 +11902,7 @@ jQuery(document).ready(function($) {
                     <a href="http://soumyadsanyal.com/the-unreasonable-effectiveness-of-type-inference.html">posted at 07:00</a>
                     &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
                 </div>
-		<a href="http://soumyadsanyal.com/the-unreasonable-effectiveness-of-type-inference.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Dec 10, 2017</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/examples-and-counterexamples.html" rel="bookmark" title="Permanent Link to &quot;Examples and Counterexamples&quot;">Examples and Counterexamples</a>
-                </h2>
-
-                <h5 id="or-what-this-blog-is-about.">Or, what this blog is about.</h5>
-<p>It’s not always easy finding a common thread between diverse interests, especially when you learn new things over time and your interests evolve.</p>
-<p>Which is another way of saying that I’m still figuring out what this blog is really about, and what its range should be.</p>
-<p>But for the moment, I think I’ve settled on the thread of <em>Examples and Counterexamples</em>.</p>
-<p>What makes examples and counterexamples so helpful, and sometimes so beautiful?</p>
-<p>From one point of view, a good example can often contain the germ of a really good idea, demonstrating it in a very concrete, accessible way, and recording its motivating examples, even if the resulting theory becomes very general in the end.</p>
-<p>A good example, when as simple and succinct as possible, feels like carrying around a really rare gem of an idea in your pocket at all time. It’s a powerful, lightweight addition to your problem-solving superpowers, that by its simplicity and elegance, burrows its way into your mind and makes itself available to be used at all times.</p>
-<p>A good set of examples pertaining to an idea can also serve to show you in precisely what situations an idea will be valid. They demonstrate the idea’s <em>range</em> in simple, memorable and powerful ways.</p>
-<p>And a good set of counterexamples serve to draw bright lines around your idea, showing you in which situations your ideas will <em>not</em> apply, where you should feel confident that this terrain is <em>different</em>, and needs genuinely new ideas. They protect you from generalizing incorrectly, and keep you from fooling yourself into believing that you’re smarter than you actually are.</p>
-<p>Between math, computer science, data science and engineering, statistics, and politics, examples and counterexamples, especially when simple, constructive and concrete, have always packed the greatest bang for the buck for me.</p>
-<p><em>Examples and counterexamples</em> will probably be the common thread between most of my posts on this blog.</p>
-
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/examples-and-counterexamples.html">posted at 07:00</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/examples-and-counterexamples.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Dec 04, 2017</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/cats-types-and-programming.html" rel="bookmark" title="Permanent Link to &quot;Cats, Types and Programming&quot;">Cats, Types and Programming</a>
-                </h2>
-
-                <h3 id="what-this-is">What this is</h3>
-<p>A casual refresher for myself on categories, type theory, and programming languages. Mostly following MacLane and Lambek-Scott for these next few posts. This is mostly a rough brain dump, and I’m not editing very carefully, so there will be mistakes. In the following posts I’m going to go back and forth between thinking about categories and types, and interpreting concepts from one in the other. A likely reference on the computational side of things is Rydeheard-Burstall, and I’ll try my hand at implementing some of these ideas in <code>ML</code>, <code>Haskell</code> and <code>Scala</code> where possible.</p>
-<h3 id="categories">Categories</h3>
-<p>A category consists of the following data:</p>
-<blockquote>
-<p><span class="math inline">𝒞 = (𝒞<sub>0</sub>, 𝒞<sub>1</sub>)</span></p>
-</blockquote>
-<p>where the elements of <span class="math inline">𝒞<sub>0</sub></span> are primitive types, and the elements of <span class="math inline">𝒞<sub>1</sub></span> are of type <span class="math inline">𝒞<sub>0</sub> → 𝒞<sub>0</sub></span>.</p>
-<p>The interpretation of <span class="math inline">𝒞<sub>0</sub></span> and <span class="math inline">𝒞<sub>1</sub></span> are as the objects and morphisms of the category <span class="math inline">𝒞</span>.</p>
-<p>We’ll use the notation <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span> to indicate the section of <span class="math inline">𝒞<sub>1</sub></span> consisting of arrows from <span class="math inline"><em>x</em> → <em>y</em></span> for <span class="math inline"><em>x</em>, <em>y</em> ∈ 𝒞<sub>0</sub></span>.</p>
-<p>The data <span class="math inline">(𝒞<sub>0</sub>, 𝒞<sub>1</sub>)</span> are required to respect the following specifications:</p>
-<blockquote>
-<ol type="1">
-<li>for all objects <span class="math inline"><em>x</em> ∈ 𝒞<sub>0</sub></span>, there is a unique arrow <span class="math inline"><em>i</em><sub><em>x</em></sub></span> in <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>x</em>)</span>, which we also abbreviate as <span class="math inline"><em>x</em></span>, such that for all objects <span class="math inline"><em>y</em> ∈ 𝒞<sub>0</sub></span>, the following two conditions hold:</li>
-</ol>
-<ul>
-<li>for all arrows <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span>, the equality <span class="math inline"><em>f</em> ∘ <em>i</em><sub><em>x</em></sub> = <em>f</em></span> holds, and</li>
-<li>for all arrows <span class="math inline"><em>g</em> ∈ 𝒞<sub>1</sub>(<em>y</em>, <em>x</em>)</span>, the equality <span class="math inline"><em>i</em><sub><em>x</em></sub> ∘ <em>g</em> = <em>g</em></span> holds,</li>
-</ul>
-</blockquote>
-<p>and</p>
-<blockquote>
-<ol start="2" type="1">
-<li>for all objects <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ 𝒞<sub>0</sub></span>, and for all arrows <span class="math inline"><em>g</em> ∈ 𝒞<sub>1</sub>(<em>y</em>, <em>z</em>)</span> and <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span>, the composition <span class="math inline"><em>g</em> ∘ <em>f</em></span> exists in <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>z</em>)</span>.</li>
-</ol>
-</blockquote>
-<h3 id="functors">Functors</h3>
-<p>A functor between two categories <span class="math inline">𝒞</span> and <span class="math inline">𝒟</span> is a pair of maps <span class="math inline">ℱ = (ℱ<sub>0</sub>, ℱ<sub>1</sub>)</span>, with each map having the following types:</p>
-<blockquote>
-<ol type="1">
-<li><span class="math inline">ℱ<sub>0</sub> : 𝒞<sub>0</sub> → 𝒟<sub>0</sub></span></li>
-<li><span class="math inline">ℱ<sub>1</sub> : 𝒞<sub>1</sub> → 𝒟<sub>1</sub></span></li>
-</ol>
-</blockquote>
-<p>that respect the following conditions:</p>
-<blockquote>
-<ol type="1">
-<li>for all objects <span class="math inline"><em>x</em> ∈ 𝒞<sub>0</sub></span>, the equality <span class="math inline">ℱ<sub>1</sub>(<em>i</em><sub><em>x</em></sub>)=<em>i</em><sub>ℱ<sub>0</sub>(<em>x</em>)</sub></span> holds in <span class="math inline">𝒟<sub>1</sub>(<em>x</em>, <em>x</em>)</span>, and</li>
-<li>for all objects <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ 𝒞<sub>0</sub></span>, and for all arrows <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span> and for all arrows <span class="math inline"><em>g</em> ∈ 𝒞<sub>1</sub>(<em>y</em>, <em>z</em>)</span>, we have <span class="math inline">ℱ<sub>1</sub>(<em>g</em>∘<sub>𝒞</sub><em>f</em>)=ℱ<sub>1</sub>(<em>g</em>)∘<sub>𝒟</sub>ℱ<sub>1</sub>(<em>f</em>)</span>.</li>
-</ol>
-</blockquote>
-<h3 id="natural-transformations">Natural transformations</h3>
-<p>Given two functors <span class="math inline">ℱ</span> and <span class="math inline">𝒢</span> between a common source <span class="math inline">𝒞</span> and target category <span class="math inline">𝒟</span>, a natural transformation <span class="math inline">𝓉</span> is a family of maps <span class="math inline">{𝓉(<em>x</em>):𝒟<sub>0</sub> → 𝒟<sub>0</sub>|<em>x</em> ∈ 𝒞<sub>0</sub>}</span>, implementing a sort of conjugation between the images of <span class="math inline">ℱ</span> and <span class="math inline">𝒢</span>, respecting the induced arrows in the images of each functor, that implements a sort of binary relation on all functors <span class="math inline">𝒞 → 𝒟</span>.</p>
-<p>Let’s be more precise. Suppose we have two categories <span class="math inline">(𝒞<sub>0</sub>, 𝒞<sub>1</sub>)</span> and <span class="math inline">(𝒟<sub>0</sub>, 𝒟<sub>1</sub>)</span>, and two functors between them, (<span class="math inline">ℱ<sub>0</sub>, ℱ<sub>1</sub>)</span> and <span class="math inline">(𝒢<sub>0</sub>, 𝒢<sub>1</sub>)</span>. A natural transformation between <span class="math inline">ℱ</span> and <span class="math inline">𝒢</span> is a collection of arrows in <span class="math inline">𝒟<sub>1</sub></span>, indexed by the objects in <span class="math inline">𝒞<sub>0</sub></span>:</p>
-<blockquote>
-<p><span class="math inline">{𝓉(<em>x</em>)∈𝒟<sub>1</sub>(ℱ<sub>0</sub>(<em>x</em>),𝒢<sub>0</sub>(<em>x</em>))|<em>x</em> ∈ 𝒞<sub>0</sub>},</span></p>
-</blockquote>
-<p>that implements for all <span class="math inline"><em>x</em>, <em>y</em> ∈ 𝒞<sub>0</sub></span> and for all <span class="math inline"><em>f</em> ∈ 𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span>:</p>
-<blockquote>
-<p><span class="math inline">𝓉(<em>y</em>)∘ℱ<sub>1</sub>(<em>f</em>)=𝒢<sub>1</sub>(<em>f</em>)∘𝓉(<em>x</em>)</span> in <span class="math inline">𝒟<sub>1</sub>(ℱ<sub>0</sub>(<em>x</em>),𝒢<sub>0</sub>(<em>y</em>))</span>.</p>
-</blockquote>
-<h3 id="examples-of-categories">Examples of categories</h3>
-<p>To fix ideas, and develop some facility with examples and counterexamples, it is helpful to have a library of examples at hand. In this section let’s list some basic examples of categories, for concreteness.</p>
-<ol type="1">
-<li>Discrete categories. A category <span class="math inline">𝒞</span> with objects <span class="math inline">𝒞<sub>0</sub></span> is discrete if the only arrows in its hom-sets are the required identities, and the composition law vacuously holds. So, <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>y</em>)</span> is empty if <span class="math inline"><em>x</em> ≠ <em>y</em></span> and <span class="math inline">𝒞<sub>1</sub>(<em>x</em>, <em>x</em>)=<em>x</em></span> for all <span class="math inline"><em>x</em> ∈ 𝒞<sub>0</sub></span>.</li>
-<li>Monoids. This is an important example to grasp, for e.g. the <code>algebird</code> library we’ll be looking into later. A monoid is a category <span class="math inline">ℳ</span> with exactly one object <span class="math inline"><em>m</em></span>. This means that the monoid is determined by the set <span class="math inline">ℳ<sub>1</sub>(<em>m</em>, <em>m</em>)</span> and the composition law, which interprets the monoid product <span class="math inline"><em>M</em> × <em>M</em> → <em>M</em></span>, inheriting associativity from the composition law and the identity <span class="math inline"><em>i</em><sub><em>m</em></sub></span>. Also, keep in mind that for any category <span class="math inline">𝒞</span> whatsoever and any object <span class="math inline"><em>c</em> ∈ 𝒞<sub>0</sub></span>, the homset <span class="math inline">𝒞<sub>1</sub>(<em>c</em>, <em>c</em>)</span> determines a monoid.</li>
-<li>Groups. A group is a category <span class="math inline">𝒢</span> with exactly one object <span class="math inline"><em>g</em></span>, where every arrow <span class="math inline"><em>f</em></span> in the homset <span class="math inline">𝒢<sub>1</sub>(<em>g</em>, <em>g</em>)</span> has a two-sided inverse.</li>
-<li>Matrices. Suppose <span class="math inline"><em>K</em></span> is a commutative ring. The set <span class="math inline">𝕄(<em>K</em>)</span> of rectangular matrices <span class="math inline"><em>A</em></span> with entries in <span class="math inline"><em>K</em></span> is a category <span class="math inline">ℳ(<em>K</em>)</span> in the following way. The objects of <span class="math inline">𝕄(<em>K</em>)</span> consist of the natural numbers <span class="math inline">ℕ</span>, and the homsets <span class="math inline">ℳ(<em>K</em>)<sub>1</sub>(<em>m</em>, <em>n</em>)</span> consist of all <span class="math inline"><em>K</em></span>-valued matrices of dimensions <span class="math inline"><em>m</em> × <em>n</em></span>. The composition law in <span class="math inline">ℳ(<em>K</em>)</span> is the usual matrix multiplication.</li>
-<li>Sets. Suppose <span class="math inline">𝕍</span> is a set of sets. Define <span class="math inline">ℰ(𝕍)</span> to be a category as follows. The objects are the sets <span class="math inline"><em>x</em> ∈ 𝕍</span>, and the homsets <span class="math inline">ℰ(𝕍)<sub>1</sub>(<em>x</em>, <em>y</em>)</span> consist of all functions <span class="math inline"><em>f</em> : <em>x</em> → <em>y</em></span>. The composition law is composition of functions.</li>
-<li>Preorders. This is an important example for logic and programming. A preorder is a category <span class="math inline">𝒫</span> such that for any pair of objects <span class="math inline"><em>p</em>, <em>q</em></span> in <span class="math inline">𝒫<sub>0</sub></span>, there is at most one arrow in the homset <span class="math inline">𝒫<sub>1</sub>(<em>p</em>, <em>q</em>)</span>.</li>
-<li>Ordinal numbers. An ordinal number is a category <span class="math inline">𝒪(<em>n</em>)</span> that consists of the objects <span class="math inline">𝒪(<em>n</em>)<sub>0</sub> = {<em>m</em>|<em>m</em> ∈ ℕ ∪ {0},<em>m</em> ≤ <em>n</em>}</span>, and with the only nonempty nontrivial homsets being the singletons <span class="math inline">𝒪(<em>n</em>)<sub>1</sub>(<em>m</em>, <em>m</em> + 1)={<em>m</em> → <em>m</em> + 1</span> for each <span class="math inline"><em>m</em> ∈ 𝒪(<em>n</em>)<sub>0</sub>}</span>. That is, each ordinal number implements the preorder category, and is a special case of it. The unique ordinal succeeding all the finite ordinals is the category <span class="math inline">𝒪(<em>ω</em>)</span> whose objects are <span class="math inline">{<em>n</em>|<em>n</em> ∈ ℕ ∪ {0}}</span> and whose only nonempty nontrivial homsets are the singletons <span class="math inline"><em>O</em>(<em>ω</em>)<sub>1</sub>(<em>m</em>, <em>m</em> + 1)</span>.</li>
-</ol>
-
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/cats-types-and-programming.html">posted at 07:00</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/cats-types-and-programming.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 10, 2016</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/looking-at-the-dataset-correlations.html" rel="bookmark" title="Permanent Link to &quot;Looking at the dataset - correlations&quot;">Looking at the dataset - correlations</a>
-                </h2>
-
-                <p>{% notebook exploratory-bivariate.ipynb %}</p>
-
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/looking-at-the-dataset-correlations.html">posted at 12:47</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/looking-at-the-dataset-correlations.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Dec 24, 2015</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/looking-at-the-dataset-univariate-plots.html" rel="bookmark" title="Permanent Link to &quot;Looking at the dataset - univariate plots&quot;">Looking at the dataset - univariate plots</a>
-                </h2>
-
-                <p>{% notebook exploratory-explanatory-variables-univariate-analysis.ipynb %}</p>
-
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/looking-at-the-dataset-univariate-plots.html">posted at 12:43</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/looking-at-the-dataset-univariate-plots.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Dec 22, 2015</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/looking-at-the-dataset-yet-more-cleaning-looking-at-the-predicted-variables.html" rel="bookmark" title="Permanent Link to &quot;Looking at the dataset - yet more cleaning, looking at the predicted variables&quot;">Looking at the dataset - yet more cleaning, looking at the predicted variables</a>
-                </h2>
-
-                <p>{% notebook exploratory-univariate-cleaning-predicted.ipynb %}</p>
-
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/looking-at-the-dataset-yet-more-cleaning-looking-at-the-predicted-variables.html">posted at 12:43</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/looking-at-the-dataset-yet-more-cleaning-looking-at-the-predicted-variables.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Dec 21, 2015</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/building-the-dataset.html" rel="bookmark" title="Permanent Link to &quot;Building the dataset&quot;">Building the dataset</a>
-                </h2>
-
-                <p>{% notebook build.ipynb %}</p>
-<p>Now that we have the dataset written to disk in a format that I can use, in the next post I’ll take a look at what the dataset contains and try to get a sense of the questions I might be able to answer with it.</p>
-
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/building-the-dataset.html">posted at 19:43</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/building-the-dataset.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Dec 21, 2015</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/the-dataset.html" rel="bookmark" title="Permanent Link to &quot;The dataset&quot;">The dataset</a>
-                </h2>
-
-                <p>In my last post, I looked at several datasets that <a href="http://www.cms.gov/Research-Statistics-Data-and-Systems/Research-Statistics-Data-and-Systems.html">CMS</a> provides, and worried that none of them were adequate to answer the question at hand: what drives healthcare spending in the United States?</p>
-<p>What then jumpstarted my Insight project in its first week was a tip from one of the Insight NYC program directors, <a href="https://www.linkedin.com/profile/view?id=248574012">Friederike Schueuer</a>, who suggested I look into the <a href="http://meps.ahrq.gov/mepsweb/">Medical Expenditure Panel Survey</a> dataset.</p>
-<p>This turned out to be something of a jackpot. The MEPS panel dataset has been assembled (under different names) since 1996, and surveys about 35,000 people a year. It collects detailed information on (amongst other things) their demographics, household composition, employment, income, socio-economic status, insurance status, health status (including chronic conditions) and how much they were charged for healthcare over the year in four different provider settings: office-based, outpatient, inpatient, and emergency room.</p>
-<p>What turned out to be harder about working with this dataset was the fact that the data was only provided in a flat-file format with no delimiters. It turns out that the term for such files is “fixed-width”, where each record appears in its own row (terminated by the carriage return character) and the entries for each column appear within fixed columns in the dataset. For example, the record ID for each record might occupy exactly the first five characters of the record, the insurance status might be recorded using characters in columns 101-105, etc. The only problem with this was that the only place I seemed to be able to find the correspondence between variables and column numbers was in an html file on the web entirely separate from the dataset itself. For example, <a href="http://meps.ahrq.gov/mepsweb/data_stats/download_data_files_codebook.jsp?PUFId=H163">this</a> is the codebook for the 2013 dataset, and there were over 1700 variables in the dataset.</p>
-<p>In the next post, I’ll detail how I went about getting a hold of the code dictionary by using a web scraper, and then rewriting the MEPS dataset into a comma separated file so I could load it into an analysis tool like (Python) pandas.</p>
-
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/the-dataset.html">posted at 12:43</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/the-dataset.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Dec 20, 2015</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/finding-data-to-use.html" rel="bookmark" title="Permanent Link to &quot;Finding data to use&quot;">Finding data to use</a>
-                </h2>
-
-                <p>In this post, I’ll outline how I made decisions about the data I chose to use to build the model behind my Insight project.</p>
-<p>There were a few choices to be made, and a lot of constraints to consider. Something I came across in looking up data sources for this project was the contrast between the richness of the data currently available when it came to healthcare expenditure in the public (Medicare, Medicaid) sector, and how useful this data was for solving the problem I wanted to address.</p>
-<p>To be more specific, there is a wealth of data available from <a href="http://www.cms.gov/Research-Statistics-Data-and-Systems/Research-Statistics-Data-and-Systems.html">CMS</a> that sheds light on utilization and expenditure patterns for Medicare/Medicaid patients. However, it’s hard to say to what extent patterns in this market are reflected in the private payor market - for patients with private individual plans or employer sponsored insurance. It’s reasonable to be concerned that these two markets are sufficiently different in terms of market dynamics that what drives costs in the public payor market won’t translate to the private payor market.</p>
-<p>One dataset that caught my attention despite this issue was the <a href="https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/index.html">Medicare Provider Utilization and Payment Data</a> set. This is a highly detailed dataset reporting information that includes: NPI (National Provider ID), provider location information (physical address), provider specialty, provider Medicare participation, HCPCS (Healthcare Common Procedure Coding System) code and description, average and standard deviation of reimbursement under Medicare (including coinsurance, deductible and any third party payments) and the average and standard deviation of the submitted charge (what the provider actually bills). Medicare reimbursement rates are commonly held to track operating costs for providers, and so the ratio of submitted charges to Medicare reimbursement for each procedure code and in each location can be used as a rough proxy for the markups over cost seen at these facilities.</p>
-<p>Amongst other things, the markup proxy may be useful as a way to estimate billed charges for consumers, if the Medicare reimbursement rates for a specific condition are already known.</p>
-<p>More interestingly, (spoiler alert!) one of the conclusions I drew at the end of my Insight project was that I expect the relative market power of the provider and the payor to be a strong determinant of what a healthcare consumer is billed. (It turned out that demographic, socioeconomic and health status information were useful, but nowhere near sufficient to explain the statistical variation in billed charges.) Given the results of my project, I’ve come to believe that considering market power needs to be a crucial part of the discussion on managing healthcare costs and improving healthcare outcomes.</p>
-<p>This perspective is supported by a recent <a href="http://www.healthcarepricingproject.org/sites/default/files/pricing_variation_manuscript_0.pdf">paper</a> by Cooper, Craig, Gaynor and van Reenen from earlier this month. They show that the primary determinant for the variation in healthcare spending for privately insured consumers is providers’ transaction prices; further, hospital prices are positively associated with indicators of hospital market power. They show that even after controlling for a multitude of demand and cost factors, prices at hospitals enjoying monopoly power in a hospital referral region are 15.3% higher than in markets with four or more hospitals.</p>
-<p>Another exciting feature of this paper is their use of a novel dataset provided by the Healthcare Cost Institute (HCCI) containing claims data submitted by Aetna, Humana and United Healthcare. Why is this exciting?</p>
-<p>The Kaiser Family Foundation has compiled <a href="http://kff.org/other/state-indicator/total-population/">data</a> estimating that in 2014, Medicare covered 13% of Americans, while Medicaid covered 19% of Americans. Combined, this accounts for about a third of the U.S. population, which contrasts with 49% of Americans covered under an employer sponsored plan. While Medicare and Medicaid are likely to be the most powerful payors in the country (in terms of pricing power), private ESIs are likely to have much less pricing power relative to providers, while covering many more people. Therefore, one can imagine that understanding the private payor market will be crucial to understanding what drives healthcare expenditure in the U.S.</p>
-<p>The Cooper-Craig-Gaynor-van Reenen paper has also been <a href="http://www.nytimes.com/interactive/2015/12/15/upshot/the-best-places-for-better-cheaper-health-care-arent-what-experts-thought.html?hp&amp;action=click&amp;pgtype=Homepage&amp;clickSource=story-heading&amp;module=second-column-region&amp;region=top-news&amp;WT.nav=top-news&amp;_r=0">featured</a> in the news, which may make for better reading if you’re not in the mood for an academic paper.</p>
-<p>For yet another perspective on the importance of market power in controlling healthcare costs, see <a href="http://www.law.umich.edu/FacultyBio/Pages/FacultyBio.aspx?FacID=nbagley">Nicholas Bagley’s</a> recent <a href="http://theincidentaleconomist.com/wordpress/if-prices-are-the-problem-erisa-is-not-the-solution/">post</a> drawing attention to the obstructions strewn in the path of those seeking more and better data on the private payor market.</p>
-<p>Given all this, I’m somewhat interested to see whether the markup proxies that can be obtained from the aforementioned <a href="https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/index.html">Medicare Provider Utilization and Payment Data</a> dataset can be sensibly used (perhaps after joining with another database with a more comprehensive list of providers in various referral regions) to estimate providers’ pricing power.</p>
-<p>It was unfortunately impossible to run this experiment within the short timeframe of an Insight project, but it’s definitely something I’d like to investigate further in the coming months.</p>
-<p>Well, I’m currently at a loss as to how to proceed. In the next post, I’ll detail the dataset that I did discover to be useful, and what was helpful about it.</p>
-
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/finding-data-to-use.html">posted at 12:01</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/finding-data-to-use.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Dec 20, 2015</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://soumyadsanyal.com/my-insight-project.html" rel="bookmark" title="Permanent Link to &quot;My Insight project&quot;">My Insight project</a>
-                </h2>
-
-                <p>In the next set of posts, I’m going to introduce my Insight project.</p>
-<p>Prompted by <a href="https://linkedin.com/in/jakeklamka">Jake Klamka’s</a> suggestion that we try to work on something that we feel would be impactful, I gave some thought during the first week of Insight to the question of the healthcare market in the United States.</p>
-<p>This was far from being the first time that I’d had to think about this question. As an undergraduate, I remember reading a comparative analysis of healthcare expenditure in OECD countries, in which the point was made that the U.S. led the OECD in healthcare expenditure as a percentage of GDP, but was far from leading OECD countries in terms of allocation efficiency.</p>
-<p>Since the ACA was passed, I’ve been quite interested to read economic policy papers and blogs covering the healthcare market. One that I’ve found quite interesting is <a href="http://www.theincidentaleconomist.com">The Incidental Economist</a>. (This is not an endorsement of TIE bloggers’ conclusions, views, or anything else.)</p>
-<p>The primary market failure I’ve been interested in for a while is the lack of pricing transparency in healthcare. Anyone who’s tried to get an estimate or quote from a hospital for a visit, test or procedure <em>before</em> said visit, test or procedure will be acutely aware of how frustrating this exercise is. Many people have found that asking for this information almost always nets you at best an evasive answer along the lines of ‘’it depends on a million things, just come by and we’ll send you a bill later’’, or at worst an outright refusal to answer the question. The uncertainty introduced by the combination of this behavior, and the tremendous and variable markups on healthcare services make for poor allocative efficiency, I think. In plain English, it’s not good business.</p>
-<p>Questions I wanted to answer, therefore, included: what drives prices in the healthcare market? Is there a way to predict ahead of time what a person can expect to be billed for healthcare services over a year? What explains the variation in billed charges for healthcare between different people and different providers? Is there a way to provide this information to consumers to enable them to make better choices when it comes to their provider, treatment or lifestyle?</p>
-<p>My initial goal for my Insight project was a bit ambitious: I wanted to build an application for consumers to explore what their billed charges for healthcare would be over the next year. A natural application of these insights would be to help consumers compare health insurance plans.</p>
-<p>Over the next few posts, I’ll outline how I went about doing this.</p>
-
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://soumyadsanyal.com/my-insight-project.html">posted at 11:01</a>
-                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
-                </div>
-		<a href="http://soumyadsanyal.com/my-insight-project.html#disqus_thread">Click to read and post comments</a>
             </article>
-
-                <div class="clear"></div>
-                <div class="pages">
-
-                    <a href="http://soumyadsanyal.com/page/2" class="next_page">Next&nbsp;&rarr;</a>
-                    <span>Page 1 of 2</span>
-                </div>
-
             <div class="clear"></div>
             <footer>
                 <p>
