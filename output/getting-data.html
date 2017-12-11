@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <title>Soumya D. Sanyal | Getting data</title>
+    <link rel="shortcut icon" type="image/png" href="http://soumyadsanyal.com/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="http://soumyadsanyal.com/favicon.ico">
+    <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="http://soumyadsanyal.com/">About</a></li>
+                <li><a href="http://soumyadsanyal.com/pages/write.html">Write</a></li>
+                <li><a href="http://soumyadsanyal.com/pages/talk.html">Talk</a></li>
+                <li><a href="http://soumyadsanyal.com/blog">Blog</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="http://soumyadsanyal.com">Soumya D. Sanyal</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Dec 20, 2015</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="http://soumyadsanyal.com/getting-data.html" rel="bookmark" title="Permanent Link to &quot;Getting data&quot;">Getting data</a>
+                </h2>
+
+                <p>In this post, I'll outline how I made decisions about the data I chose to use to build the model behind my Insight project.</p>
+<p>There were a few choices to be made, and a lot of constraints to consider. Something I came across in looking up data sources for this project was the contrast between the richness of the data currently available when it came to healthcare expenditure in the public (Medicare, Medicaid) sector, and how useful this data was for solving the problem I wanted to address. </p>
+<p>To be more specific, there is a wealth of data available from <a href="http://www.cms.gov/Research-Statistics-Data-and-Systems/Research-Statistics-Data-and-Systems.html">CMS</a> that sheds light on utilization and expenditure patterns for Medicare/Medicaid patients. However, it's hard to say to what extent patterns in this market are reflected in the private payor market - for patients with private individual plans or employer sponsored insurance. It's reasonable to be concerned that these two markets are sufficiently different in terms of market dynamics that what I can learn about costs in the public payor market won't translate. </p>
+<p>One dataset that caught my attention despite these issues was the <a href="https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/index.html">Medicare Provider Utilization and Payment Data</a> set. This is a highly detailed dataset reporting information that includes: NPI (National Provider ID), provider location information (physical address), provider specialty, provider Medicare participation, HCPCS (Healthcare Common Procedure Coding System) code and description, average and standard deviation of reimbursement under Medicare (including coinsurance, deductible and any third party payments) and the average and standard deviation of the submitted charge (what the provider actually bills). Medicare reimbursement rates are commonly held to track operating costs for providers, and so the ratio of submitted charges to Medicare reimbursement for each procedure code and in each location can be used as a rough proxy for the markups over cost seen at these facilities. </p>
+<p>Amongst other things, the markup proxy may be useful as a way to estimate billed charges for consumers, if the Medicare reimbursement rates for a specific condition are already known.</p>
+<p>More interestingly, (spoiler alert) one of the conclusions I drew at the end of my Insight project was that I expect the relative market power of the provider and the payor to be a strong determinant of what a healthcare consumer is billed. (It turned out that demographic, socioeconomic and health status information were useful, but nowhere near sufficient to explain the statistical variation in billed charges.) Given the results of my project, I've come to think that considering market power needs to be a crucial part of the discussion on managing healthcare costs and improving healthcare outcomes. </p>
+<p>This perspective is supported by a recent <a href="http://www.healthcarepricingproject.org/sites/default/files/pricing_variation_manuscript_0.pdf">paper</a> from this month showing that the primary determinant for the variation in healthcare spending for privately insured consumers is providers' transaction prices; further, hospital prices are positively associated with indicators of hospital market power. They reveal that even after controlling for a multitude of demand and cost factors, prices at hospitals enjoying monopoly power in a hospital referral region are 15.3 percent higher than in markets with four or more hospitals. Another exciting feature of this paper is their use of a novel dataset provided by the Healthcare Cost Institute (HCCI) containing claims data submitted by Aetna, Humana and United Healthcare. The Kaiser Family Foundation has compiled data estimating that in 2014, Medicare covered 13 percent of Americans, while Medicaid covered 19% of Americans. Combined, this accounts for about a third of the U.S. population, contrasted with 49% of Americans covered under an employer sponsored plan. While Medicare and Medicaid are likely to be the most powerful payors in the country (in terms of market power), private ESIs are likely to have much less pricing power relative to providers, while covering many more people. Therefore, one can imagine that understanding the private payor market will be crucial to understanding what drives healthcare expenditure in the U.S. </p>
+<p>Given this, I'm interested to see whether the markup proxies that can be obtained from the <a href="https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/index.html">Medicare Provider Utilization and Payment Data</a> dataset can be sensibly used (perhaps after joining with another database with a more comprehensive list of providers in various referral regions) to estimate providers' pricing power.</p>
+<p>It was unfortunately impossible to run this experiment within the short timeframe of an Insight project, but it's definitely something I'd like to investigate further in the coming months.</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="http://soumyadsanyal.com/getting-data.html">posted at 12:01</a>
+                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
+                </div>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/soumyadsanyal/">GitHub</a>
+                &middot;
+                <a href="https://linkedin.com/in/soumyadsanyal/">LinkedIn</a>
+                &middot;
+               
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>
