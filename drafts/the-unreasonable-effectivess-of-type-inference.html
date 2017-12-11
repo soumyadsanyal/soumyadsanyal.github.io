@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Soumya D. Sanyal - Authors</title>
+        <meta charset="utf-8" />
+    <title>Soumya D. Sanyal | The unreasonable effectivess of type inference</title>
     <link rel="shortcut icon" type="image/png" href="http://soumyadsanyal.com/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="http://soumyadsanyal.com/favicon.ico">
 
@@ -11818,13 +11818,14 @@ jQuery(document).ready(function($) {
     <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
 
+
 </head>
 <body>
     <header>
         <nav>
             <ul>
                 <li><a href="http://soumyadsanyal.com/">About</a></li>
-                <li class="selected"><a href="http://soumyadsanyal.com/pages/write">Write</a></li>
+                <li><a href="http://soumyadsanyal.com/pages/write">Write</a></li>
                 <li><a href="http://soumyadsanyal.com/pages/talk">Talk</a></li>
                 <li><a href="http://soumyadsanyal.com/blog">Blog</a></li>
             </ul>
@@ -11834,11 +11835,26 @@ jQuery(document).ready(function($) {
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">    <h1>Authors on Soumya D. Sanyal</h1>
+        <div id="content">            <h4 class="date">Dec 10, 2017</h4>
 
-    <ul>        <li><a href="http://soumyadsanyal.com/author/soumya-d-sanyal.html">Soumya D. Sanyal</a> (14)</li>
-    </ul>
+            <article class="post">
+                <h2 class="title">
+                    <a href="http://soumyadsanyal.com/drafts/the-unreasonable-effectivess-of-type-inference.html" rel="bookmark" title="Permanent Link to &quot;The unreasonable effectivess of type inference&quot;">The unreasonable effectivess of type inference</a>
+                </h2>
 
+                <h3 id="a-self-reminder-to-learn-more-about-type-inference">A self-reminder to learn more about type inference</h3>
+<p>On the train back home this Friday, I was doing an exercise implementing list reversal using folds, and found myself wanting to look up the type of a left fold (I always forget the exact form).</p>
+<p>Remember that a fold is an operation that takes a binary operator <span class="math inline"><em>f</em></span>, an accumulator value <span class="math inline"><em>a</em><em>c</em><em>c</em></span>, and a list <span class="math inline"><em>l</em><em>s</em></span> (or another general recursive data structure, e.g.: a tree) and processes the list to produce something of the same type as <span class="math inline"><em>a</em><em>c</em><em>c</em></span>.</p>
+<p>To be more precise, the defining equations for a left fold are:</p>
+<p><code>foldLeft f acc [] = acc</code> and <code>foldLeft f acc x:xs = foldLeft f (f acc x) xs</code></p>
+
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="http://soumyadsanyal.com/drafts/the-unreasonable-effectivess-of-type-inference.html">posted at 07:00</a>
+                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
+                </div>
+            </article>
             <div class="clear"></div>
             <footer>
                 <p>
