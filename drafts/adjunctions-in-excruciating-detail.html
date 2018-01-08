@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <title>Soumya D. Sanyal | Adjunctions in excruciating detail</title>
+    <link rel="shortcut icon" type="image/png" href="http://soumyadsanyal.com/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="http://soumyadsanyal.com/favicon.ico">
+
+
+    <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="http://soumyadsanyal.com/">About</a></li>
+                <li><a href="http://soumyadsanyal.com/pages/write.html">Write</a></li>
+                <li><a href="http://soumyadsanyal.com/pages/talk.html">Talk</a></li>
+                <li><a href="http://soumyadsanyal.com/blog">Blog</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="http://soumyadsanyal.com">Soumya D. Sanyal</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 08, 2018</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="http://soumyadsanyal.com/drafts/adjunctions-in-excruciating-detail.html" rel="bookmark" title="Permanent Link to &quot;Adjunctions in excruciating detail&quot;">Adjunctions in excruciating detail</a>
+                </h2>
+
+                <p>Over the break I had a bit more time than usual to read. I reviewed a fair bit of Rydeheard-Burstall, which I hadn’t picked up since about 2014.</p>
+<p>The book is a lot of fun - like many of my favorite books, it employs a “just the facts” style that works very well for math in general, and has lots of interesting examples (including in the exercises, which are fairly good).</p>
+<p>Crucially, this text also highlights the computational aspects of the subject, the potential of which I find deeply exciting.</p>
+<p>In this, and possibly the next few posts, I’ll review adjunctions. Adjunctions are a universal construction in category theory, and are surprisingly widespread once you know to look for them. I’m most interested in their role in computation and programming language semantics. I’ll get to examples a little later, but I’d like to write up the construction in some detail.</p>
+<p>To set up the construction, we need a pair of categories, <span class="math inline">𝒜</span> and <span class="math inline">ℬ</span>, and a functor <span class="math inline"><em>G</em> : 𝒜 → ℬ</span>.</p>
+<p>First, let’s look at the definition of a universal arrow from <span class="math inline"><em>b</em></span> in <span class="math inline"><em>O</em><em>b</em><em>j</em>(ℬ)</span> to <span class="math inline"><em>G</em></span>.</p>
+<blockquote>
+<p>A universal arrow from <span class="math inline"><em>b</em></span> to <span class="math inline"><em>G</em></span> is a pair <span class="math inline">(<em>a</em>, <em>u</em>)</span>, with <span class="math inline"><em>a</em></span> in <span class="math inline"><em>O</em><em>b</em><em>j</em>(𝒜)</span> and <span class="math inline"><em>u</em></span> in <span class="math inline"><em>H</em><em>o</em><em>m</em><sub>ℬ</sub>(<em>b</em>, <em>G</em>(<em>a</em>))</span>, such that, for any <span class="math inline"><em>a</em>′</span> in <span class="math inline"><em>O</em><em>b</em><em>j</em>(𝒜)</span> and <span class="math inline"><em>f</em></span> in <span class="math inline"><em>H</em><em>o</em><em>m</em><sub>ℬ</sub>(<em>b</em>, <em>G</em>(<em>a</em>′))</span>, there is a <em>unique</em> <span class="math inline"><em>f</em><sup>#</sup></span> in <span class="math inline"><em>H</em><em>o</em><em>m</em><sub>𝒜</sub>(<em>a</em>, <em>a</em>′)</span> such that <span class="math inline"><em>G</em>(<em>f</em><sup>#</sup>)∘<em>u</em> = <em>f</em></span>.</p>
+</blockquote>
+<p>We’ll Skolemize and refer to this pair as <span class="math inline">(<em>a</em>, <em>u</em>)=<em>u</em><em>n</em><em>i</em><em>v</em>(<em>b</em>)</span>.</p>
+<p>Given the definition of a universal arrow, we can state two (of several equivalent) definitions of an adjunction.</p>
+<blockquote>
+<p>Definition 1. An adjunction between <span class="math inline">𝒜</span> and <span class="math inline">ℬ</span> consists of a functor <span class="math inline"><em>G</em> : 𝒜 → ℬ</span>, and for each <span class="math inline"><em>b</em></span> in <span class="math inline"><em>O</em><em>b</em><em>j</em>(ℬ)</span>, a universal arrow from <span class="math inline"><em>b</em></span> to <span class="math inline"><em>G</em></span>.</p>
+</blockquote>
+<blockquote>
+<p>Definition 2. An adjunction consists of a pair of functors <span class="math inline"><em>G</em> : 𝒜 → ℬ</span> and <span class="math inline"><em>F</em> : ℬ → 𝒜</span>, and a pair of natural transformations <span class="math inline"><em>η</em> : <em>I</em><sub>ℬ</sub> → <em>G</em><em>F</em></span> and <span class="math inline"><em>ϵ</em> : <em>F</em><em>G</em> → <em>I</em><sub>𝒜</sub></span> that satisfy the equations</p>
+</blockquote>
+<blockquote>
+<ol type="1">
+<li><span class="math inline"><em>G</em>(<em>ϵ</em>(<em>a</em>)) ∘ <em>η</em>(<em>G</em>(<em>a</em>)) = <em>i</em><sub><em>G</em></sub>(<em>a</em>)</span> for all <span class="math inline"><em>a</em></span> in <span class="math inline"><em>O</em><em>b</em><em>j</em>(𝒜)</span>, and</li>
+<li><span class="math inline"><em>ϵ</em>(<em>F</em>(<em>b</em>)) ∘ <em>F</em>(<em>η</em>(<em>b</em>)) = <em>i</em><sub><em>F</em></sub>(<em>b</em>)</span> for all <span class="math inline"><em>b</em></span> in <span class="math inline"><em>O</em><em>b</em><em>j</em>(ℬ)</span>.</li>
+</ol>
+</blockquote>
+<p>(<span class="math inline"><em>i</em><sub><em>G</em></sub></span> and <span class="math inline"><em>i</em><sub><em>F</em></sub></span> here are identity natural transformations on <span class="math inline"><em>G</em></span> and <span class="math inline"><em>F</em></span>.)</p>
+<p>The latter two equations are referred to as the unit-counit equations.</p>
+<p>This constructs <span class="math inline"><em>F</em></span> as <em>the</em> left adjoint to <span class="math inline"><em>G</em></span>, and <span class="math inline"><em>G</em></span> is referred to as <em>the</em> right adjoint to <span class="math inline"><em>F</em></span>. The uniqueness implicit here is upto natural isomorphism of functors. We’ll verify that the adjoints uniquely determine each other upto isomorphism later.</p>
+<p>It’s a useful exercise to verify that these two definitions are equivalent. The proof is sketched out in Rydeheard-Burstall, but let’s work this out in a bit more detail.</p>
+<p>Let’s first assume the existence of a universal arrow from <span class="math inline"><em>b</em></span> to <span class="math inline"><em>G</em></span> for every <span class="math inline"><em>b</em></span> in <span class="math inline"><em>O</em><em>b</em><em>j</em>(ℬ)</span>. Let’s construct the left adjoint functor <span class="math inline"><em>F</em></span> and verify that the unit-counit equations hold.</p>
+<p>To construct <span class="math inline"><em>F</em></span>, we’ll specify its action on objects <span class="math inline"><em>b</em></span> as follows: take a universal arrow <span class="math inline"><em>u</em><em>n</em><em>i</em><em>v</em>(<em>b</em>)=(<em>a</em>, <em>u</em>)</span>. Then define <span class="math inline"><em>F</em>(<em>b</em>)=<em>a</em></span>.</p>
+<p>(Now, the definition of a universal arrow doesn’t state that there is a <em>unique</em> pair <span class="math inline">(<em>a</em>, <em>u</em>)</span> in <span class="math inline"><em>O</em><em>b</em><em>j</em>(𝒜)</span> satisfiying the condition. In a sense, my “Skolemization” above was a bit of cheating. However, the uniqueness imposed on <span class="math inline"><em>f</em><sup>#</sup></span> given <span class="math inline"><em>f</em></span> implies that that if <span class="math inline">(<em>a</em>′,<em>u</em>′)</span> is another universal arrow for <span class="math inline"><em>b</em></span>, then <span class="math inline"><em>a</em></span> and <span class="math inline"><em>a</em>′</span> are isomorphic in <span class="math inline">𝒜</span>, and the the isomorphism is provided by the arrows <span class="math inline"><em>u</em><sup>#</sup></span> and <span class="math inline"><em>u</em>′<sup>#</sup></span>. It suffices to pick any such <span class="math inline"><em>a</em></span> in the above construction of <span class="math inline"><em>F</em></span>. A final aside: if you work this fact out yourself, you’ll also have discovered the basic proof technique for a lot of what follows, which is using the uniqueness in the universal condition to assert that two arrows are in fact equal.)</p>
+<p>Next let’s get the action of <span class="math inline"><em>F</em></span> on arrows. Let <span class="math inline"><em>b</em>′</span> be any object in <span class="math inline">ℬ</span>, and let <span class="math inline"><em>f</em></span> be any arrow in <span class="math inline"><em>H</em><em>o</em><em>m</em><sub>ℬ</sub>(<em>b</em>, <em>b</em>′)</span>. By universality of <span class="math inline"><em>u</em><em>n</em><em>i</em><em>v</em>(<em>b</em>)</span>, there is a unique arrow <span class="math inline"><em>f</em><sup>#</sup></span> in <span class="math inline"><em>H</em><em>o</em><em>m</em><sub>𝒜</sub>(<em>a</em>, <em>a</em>′)</span> such that <span class="math inline"><em>G</em>(<em>f</em><sup>#</sup>)∘<em>u</em> = <em>f</em></span>. Define <span class="math inline"><em>F</em>(<em>f</em>):=<em>f</em><sup>#</sup></span>.</p>
+<p>Next, let’s construct the unit and counit.</p>
+<p>For the unit, look at <span class="math inline"><em>u</em><em>n</em><em>i</em><em>v</em>(<em>b</em>)=(<em>F</em>(<em>b</em>),<em>u</em>)</span>. Define <span class="math inline"><em>η</em>(<em>b</em>)=<em>u</em></span>, so that we now have <span class="math inline"><em>u</em><em>n</em><em>i</em><em>v</em>(<em>b</em>)=(<em>F</em>(<em>b</em>),<em>η</em>(<em>b</em>))</span>. The same proof that <span class="math inline"><em>F</em>(<em>b</em>)</span> was well-defined upto an isomorphism also shows that the unit is well defined upto composition with an isomorphism.</p>
+<p>For the counit, let <span class="math inline"><em>a</em></span> be in <span class="math inline"><em>O</em><em>b</em><em>j</em>(𝒜)</span>. Then <span class="math inline"><em>G</em>(<em>a</em>)</span> is in <span class="math inline"><em>O</em><em>b</em><em>j</em>(ℬ)</span>. Look at <span class="math inline">(<em>F</em><em>G</em>(<em>a</em>),<em>η</em>(<em>G</em>(<em>a</em>)))=<em>u</em><em>n</em><em>i</em><em>v</em>(<em>G</em>(<em>a</em>))</span>. Look next at <span class="math inline"><em>i</em><em>d</em><sub><em>G</em>(<em>a</em>)</sub></span> in <span class="math inline"><em>H</em><em>o</em><em>m</em><sub>ℬ</sub>(<em>G</em>(<em>a</em>),<em>G</em>(<em>a</em>))</span> (which always exists!). By universality, there is a unique arrow <span class="math inline"><em>i</em><em>d</em><sub><em>G</em>(<em>a</em>)</sub><sup>#</sup></span> in <span class="math inline"><em>H</em><em>o</em><em>m</em><sub>𝒜</sub>(<em>F</em><em>G</em>(<em>a</em>),<em>a</em>)</span> solving the equation</p>
+<blockquote>
+<p><span class="math inline"><em>G</em>(<em>i</em><em>d</em><sub><em>G</em>(<em>a</em>)</sub><sup>#</sup>)∘<em>η</em>(<em>G</em>(<em>a</em>)) = <em>i</em><em>d</em><sub><em>G</em>(<em>a</em>)</sub></span></p>
+</blockquote>
+<p>Define <span class="math inline"><em>ϵ</em>(<em>a</em>)=<em>i</em><em>d</em><sub><em>G</em>(<em>a</em>)</sub><sup>#</sup></span> to obtain the counit.</p>
+<p>We’ll verify that <span class="math inline"><em>F</em></span> is actually a functor, and also that <span class="math inline"><em>η</em></span> and <span class="math inline"><em>ϵ</em></span> are actually the necessary natural transforms shortly, but take a step back for a moment. Notice that plugging in the definition of <span class="math inline"><em>ϵ</em>(<em>a</em>)</span> in the equation above gives the first of the unit-counit equations that we wanted to check. So modulo the rest of the proof, we’ll get this for free.</p>
+<p>TBC…</p>
+
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="http://soumyadsanyal.com/drafts/adjunctions-in-excruciating-detail.html">posted at 07:00</a>
+                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
+                </div>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/soumyadsanyal/">GitHub</a>
+                &middot;
+                <a href="https://linkedin.com/in/soumyadsanyal/">LinkedIn</a>
+                &middot;
+                <a href="https://twitter.com/soumyadsanyal">Twitter</a>
+                &middot;
+               
+
+                &middot;
+		<p>© Copyright 2015 - 2018, Soumya D. Sanyal.</p>
+
+
+
+
+
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-72888309-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
