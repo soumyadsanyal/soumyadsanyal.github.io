@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <title>Soumya D. Sanyal | Cats, Types and Programming</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://soumyadsanyal.com/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="http://soumyadsanyal.com/">About</a></li>
+                <li><a href="http://soumyadsanyal.com/pages/write.html">Write</a></li>
+                <li><a href="http://soumyadsanyal.com/blog">Blog</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="http://soumyadsanyal.com">Soumya D. Sanyal</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Dec 04, 2017</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="http://soumyadsanyal.com/drafts/cats-types-and-programming.html" rel="bookmark" title="Permanent Link to &quot;Cats, Types and Programming&quot;">Cats, Types and Programming</a>
+                </h2>
+
+                <h3>What this is</h3>
+<p>A casual refresher for myself on categories, type theory,
+and programming languages. Mostly following MacLane and Lambek-Scott
+for these next few posts. This is mostly a rough brain dump, and I'm not editing very carefully, so there will be mistakes. In the following posts I'm going to go back and forth between thinking about categories and types, and interpreting concepts from one in the other. A likely reference on the computational side of things is Rydeheard-Burstall, and I'll try my hand at implementing some of these ideas in <code>ML</code>, <code>Haskell</code> and <code>Scala</code> where possible.</p>
+<h3>Categories</h3>
+<p>A category consists of the following data:</p>
+<blockquote>
+<p><span class="math">\(\mathcal{C} = (\mathcal{C}_0, \mathcal{C}_1)\)</span></p>
+</blockquote>
+<p>where the elements of <span class="math">\(\mathcal{C}_0\)</span> are primitive types, and the elements
+of <span class="math">\(\mathcal{C}_1\)</span> are of type <span class="math">\(\mathcal{C}_0 \rightarrow \mathcal{C}_0\)</span>.</p>
+<p>The interpretation of <span class="math">\(\mathcal{C}_0\)</span> and <span class="math">\(\mathcal{C}_1\)</span> are as the objects and morphisms of the
+category <span class="math">\(\mathcal{C}\)</span>. </p>
+<p>We'll use the notation <span class="math">\(\mathcal{C}_1(x, y)\)</span> to indicate the section of
+<span class="math">\(\mathcal{C}_1\)</span> consisting of arrows from <span class="math">\(x \rightarrow y\)</span> for <span class="math">\(x, y \in
+\mathcal{C}_0\)</span>.</p>
+<p>The data <span class="math">\((\mathcal{C}_0, \mathcal{C}_1)\)</span> are required to respect the following specifications:</p>
+<blockquote>
+<ol>
+<li>for all objects <span class="math">\(x \in \mathcal{C}_0\)</span>, there is a unique arrow <span class="math">\(i_x\)</span> in <span class="math">\(\mathcal{C}_1(x,x)\)</span>, which we also abbreviate as <span class="math">\(x\)</span>, such that for all objects <span class="math">\(y \in \mathcal{C}_0\)</span>, the following two conditions hold: </li>
+<li>for all arrows <span class="math">\(f \in \mathcal{C}_1(x,y)\)</span>, the equality <span class="math">\(f \circ i_x = f\)</span> holds, and </li>
+<li>for all arrows <span class="math">\(g \in \mathcal{C}_1(y,x)\)</span>, the equality <span class="math">\(i_x \circ g = g\)</span> holds,</li>
+</ol>
+</blockquote>
+<p>and</p>
+<blockquote>
+<ol>
+<li>for all objects <span class="math">\(x, y, z \in \mathcal{C}_0\)</span>, and for all arrows <span class="math">\(g \in \mathcal{C}_1(y,z)\)</span> and <span class="math">\(f \in \mathcal{C}_1(x,y)\)</span>, the composition <span class="math">\(g \circ f\)</span> exists in <span class="math">\(\mathcal{C}_1(x,z)\)</span>.</li>
+</ol>
+</blockquote>
+<h3>Functors</h3>
+<p>A functor between two categories <span class="math">\(\mathcal{C}\)</span> and <span class="math">\(\mathcal{D}\)</span> is a pair of maps <span class="math">\(\mathcal{F} = (\mathcal{F_0}, \mathcal{F_1})\)</span>, with each map having the following types:</p>
+<blockquote>
+<ol>
+<li><span class="math">\(\mathcal{F}_0: \mathcal{C}_0 \rightarrow \mathcal{D}_0\)</span></li>
+<li><span class="math">\(\mathcal{F}_1: \mathcal{C}_1 \rightarrow \mathcal{D}_1\)</span></li>
+</ol>
+</blockquote>
+<p>that respect the following conditions:</p>
+<blockquote>
+<ol>
+<li>for all objects <span class="math">\(x \in \mathcal{C}_0\)</span>, the equality <span class="math">\(\mathcal{F}_1(i_x) = i_{\mathcal{F}_0(x)}\)</span> holds in <span class="math">\(\mathcal{D}_1(x,x)\)</span>, and </li>
+<li>for all objects <span class="math">\(x,y,z \in \mathcal{C}_0\)</span>, and for all arrows <span class="math">\(f \in \mathcal{C}_1(x,y)\)</span> and for all arrows <span class="math">\(g \in \mathcal{C}_1(y,z)\)</span>, we have <span class="math">\(\mathcal{F}_1(g \circ_{\mathcal{C}} f) = \mathcal{F}_1(g) \circ_{\mathcal{D}} \mathcal{F}_1(f)\)</span>.</li>
+</ol>
+</blockquote>
+<h3>Natural transformations</h3>
+<p>Given two functors <span class="math">\(\mathcal{F}\)</span> and <span class="math">\(\mathcal{G}\)</span> between a common source <span class="math">\(\mathcal{C}\)</span> and target category <span class="math">\(\mathcal{D}\)</span>, a natural transformation <span class="math">\(\mathcal{t}\)</span> is a family of maps <span class="math">\(\{\mathcal{t}(x): \mathcal{D}_0 \rightarrow \mathcal{D}_0 | x \in \mathcal{C}_0\}\)</span>, implementing a sort of conjugation between the images of <span class="math">\(\mathcal{F}\)</span> and <span class="math">\(\mathcal{G}\)</span>, respecting the induced arrows in the images of each functor, that implements a sort of binary relation on all functors <span class="math">\(\mathcal{C} \rightarrow \mathcal{D}\)</span>.</p>
+<p>Let's be more precise. Suppose we have two categories <span class="math">\((\mathcal{C}_0, \mathcal{C}_1)\)</span> and <span class="math">\((\mathcal{D}_0, \mathcal{D}_1)\)</span>, and two functors between
+them, (<span class="math">\(\mathcal{F}_0, \mathcal{F}_1)\)</span> and <span class="math">\((\mathcal{G}_0, \mathcal{G}_1)\)</span>. A natural transformation between <span class="math">\(\mathcal{F}\)</span> and <span class="math">\(\mathcal{G}\)</span>
+is a collection of arrows in <span class="math">\(\mathcal{D}_1\)</span>, indexed by the objects
+in <span class="math">\(\mathcal{C}_0\)</span>:</p>
+<blockquote>
+<p><span class="math">\(\{\mathcal{t}(x) \in \mathcal{D}_1(\mathcal{F}_0(x), \mathcal{G}_0(x)) | x \in \mathcal{C}_0\},\)</span></p>
+</blockquote>
+<p>that implements for all <span class="math">\(x, y \in \mathcal{C}_0\)</span> and for all <span class="math">\(f \in \mathcal{C}_1(x,y)\)</span>:</p>
+<blockquote>
+<p><span class="math">\(\mathcal{t}(y) \circ \mathcal{F}_1(f) = \mathcal{G}_1(f) \circ \mathcal{t}(x)\)</span> in <span class="math">\(\mathcal{D}_1(\mathcal{F}_0(x), \mathcal{G}_0(y))\)</span>.</p>
+</blockquote>
+<h3>Examples of categories</h3>
+<p>To fix ideas, and develop some facility with examples and
+counterexamples, it is helpful to have a library of examples at hand. In this
+section let's list some basic examples of categories, for concreteness.</p>
+<ol>
+<li>Discrete categories. A category <span class="math">\(\mathcal{C}\)</span> with objects <span class="math">\(\mathcal{C}_0\)</span> is discrete if the
+   only arrows in its hom-sets are the required identities, and the composition
+law vacuously holds. So, <span class="math">\(\mathcal{C}_1(x,y)\)</span> is empty if <span class="math">\(x \neq y\)</span> and <span class="math">\(\mathcal{C}_1(x,x) =
+x\)</span> for all <span class="math">\(x \in \mathcal{C}_0\)</span>.</li>
+<li>Monoids. This is an important example to grasp, for e.g. the <code>algebird</code>
+   library we'll be looking into later. A monoid is a category <span class="math">\(\mathcal{M}\)</span> with exactly 
+one object <span class="math">\(m\)</span>. This means that the monoid is determined by the set <span class="math">\(\mathcal{M}_1(m,m)\)</span>
+and the composition law, which interprets the monoid product <span class="math">\(M \times M
+\rightarrow M\)</span>, inheriting associativity from the composition law and the
+identity <span class="math">\(i_m\)</span>. Also, keep in mind that for any category <span class="math">\(\mathcal{C}\)</span> whatsoever and any
+object <span class="math">\(c \in \mathcal{C}_0\)</span>, the homset <span class="math">\(\mathcal{C}_1(c,c)\)</span> determines a monoid.</li>
+<li>Groups. A group is a category <span class="math">\(\mathcal{G}\)</span> with exactly one object <span class="math">\(g\)</span>, where every
+   arrow <span class="math">\(f\)</span> in the homset <span class="math">\(\mathcal{G}_1(g,g)\)</span> has a two-sided inverse.</li>
+<li>Matrices. Suppose <span class="math">\(K\)</span> is a commutative ring. The set <span class="math">\(\mathbb{M}(K)\)</span> of rectangular
+   matrices <span class="math">\(A\)</span> with entries in <span class="math">\(K\)</span> is a category <span class="math">\(\mathcal{M}(K)\)</span> in the following way. The objects of <span class="math">\(\mathbb{M}(K)\)</span> consist of the natural numbers <span class="math">\(\mathbb{N}\)</span>, and the homsets <span class="math">\(\mathcal{M}(K)_1(m,n)\)</span> consist of all <span class="math">\(K\)</span>-valued matrices of dimensions <span class="math">\(m \times n\)</span>. The composition law in <span class="math">\(\mathcal{M}(K)\)</span> is the usual matrix multiplication.</li>
+<li>Sets. Suppose <span class="math">\(\mathbb{V}\)</span> is a set of sets. Define <span class="math">\(\mathcal{E}(\mathbb{V})\)</span> to be a category as
+   follows. The objects are the sets <span class="math">\(x \in \mathbb{V}\)</span>, and the homsets <span class="math">\(\mathcal{E}(\mathbb{V})_1(x,y)\)</span>
+consist of all functions <span class="math">\(f: x \rightarrow y\)</span>. The composition law is
+composition of functions.</li>
+<li>Preorders. This is an important example for logic and programming. A preorder
+   is a category <span class="math">\(\mathcal{P}\)</span> such that for any pair of objects <span class="math">\(p, q\)</span> in <span class="math">\(\mathcal{P}_0\)</span>, there is
+at most one arrow in the homset <span class="math">\(\mathcal{P}_1(p,q)\)</span>. </li>
+<li>Ordinal numbers. An ordinal number is a category <span class="math">\(\mathcal{O}(n)\)</span> that consists of the 
+   objects <span class="math">\(\mathcal{O}(n)_0 = \{m | m \in \mathbb{N} \cup \{0\}, m \leq n\}\)</span>,
+and with the only nonempty nontrivial homsets being the singletons <span class="math">\(\mathcal{O}(n)_1(m,m+1) =
+\{m \rightarrow m+1\)</span> for each <span class="math">\(m \in \mathcal{O}(n)_0\}\)</span>. That is, each ordinal
+number implements the preorder category, and is a special case of it. The unique
+ordinal succeeding all the finite ordinals is the category <span class="math">\(\mathcal{O}({\omega})\)</span>
+whose objects are <span class="math">\(\{n | n \in \mathbb{N} \cup \{0\}\}\)</span> and whose only
+nonempty nontrivial homsets are the singletons <span class="math">\(O({\omega})_1(m,m+1)\)</span>.</li>
+</ol>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="http://soumyadsanyal.com/drafts/cats-types-and-programming.html">posted at 07:00</a>
+                    &nbsp;&middot;&nbsp;<a href="http://soumyadsanyal.com/category/blog.html" rel="tag">blog</a>
+                </div>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/soumyadsanyal/">GitHub</a>
+                &middot;
+                <a href="https://linkedin.com/in/soumyadsanyal/">LinkedIn</a>
+                &middot;
+                <a href="https://twitter.com/soumyadsanyal">Twitter</a>
+                &middot;
+               
+
+                &middot;
+		<p>© Copyright 2015 - 2021, Soumya D. Sanyal.</p>
+
+
+
+
+
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-72888309-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
