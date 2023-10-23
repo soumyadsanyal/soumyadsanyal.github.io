@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Soumya D. Sanyal</title>
+    <link>https://www.soumyadsanyal.com/</link>
+    <description>Recent content on Soumya D. Sanyal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Copyright © 2015-2023, Soumya D. Sanyal.</copyright>
+    <lastBuildDate>Mon, 23 Oct 2023 14:46:49 +0000</lastBuildDate><atom:link href="https://www.soumyadsanyal.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ETLs Are Just Continuous Integration Jobs</title>
+      <link>https://www.soumyadsanyal.com/engineering/fast-etls-are-continuous-integration-jobs/</link>
+      <pubDate>Mon, 23 Oct 2023 14:46:49 +0000</pubDate>
+      
+      <guid>https://www.soumyadsanyal.com/engineering/fast-etls-are-continuous-integration-jobs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Disagree and Commit Is Strategic</title>
+      <link>https://www.soumyadsanyal.com/leadership/disagree-and-commit-is-strategic/</link>
+      <pubDate>Sun, 22 Oct 2023 12:42:00 -0400</pubDate>
+      
+      <guid>https://www.soumyadsanyal.com/leadership/disagree-and-commit-is-strategic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Problems --&gt; Solutions --&gt; Processes --&gt; Software</title>
+      <link>https://www.soumyadsanyal.com/leadership/solutions-process-software/</link>
+      <pubDate>Sat, 21 Oct 2023 13:54:21 -0400</pubDate>
+      
+      <guid>https://www.soumyadsanyal.com/leadership/solutions-process-software/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://www.soumyadsanyal.com/contact/</link>
+      <pubDate>Thu, 19 Oct 2023 15:48:26 -0400</pubDate>
+      
+      <guid>https://www.soumyadsanyal.com/contact/</guid>
+      <description>You can find me on LinkedIn, GitHub, or here.
+Or, shoot me an email.</description>
+    </item>
+    
+    <item>
+      <title>Operational Excellence Is Insurance</title>
+      <link>https://www.soumyadsanyal.com/engineering/operational-excellence-is-insurance/</link>
+      <pubDate>Thu, 19 Oct 2023 12:43:49 -0400</pubDate>
+      
+      <guid>https://www.soumyadsanyal.com/engineering/operational-excellence-is-insurance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://www.soumyadsanyal.com/about-me/</link>
+      <pubDate>Thu, 19 Oct 2023 03:09:09 +0000</pubDate>
+      
+      <guid>https://www.soumyadsanyal.com/about-me/</guid>
+      <description>Who Hi, I&amp;rsquo;m Soumya (sew-me-a), an engineering and data leader.
+What I work at the intersection of business, software engineering, and data.
+For details, see my LinkedIn and GitHub.
+How As a technology and data leader, I focus on creating value by root causing, and efficiently solving, business problems.
+I do so by aligning and integrating (a) people, (b) process, and (c) systems.</description>
+    </item>
+    
+    <item>
+      <title>The Best Migrations Are TRIPs</title>
+      <link>https://www.soumyadsanyal.com/leadership/the-best-migrations-are-trips/</link>
+      <pubDate>Wed, 18 Oct 2023 12:45:22 -0400</pubDate>
+      
+      <guid>https://www.soumyadsanyal.com/leadership/the-best-migrations-are-trips/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Your Data Stack Is Your Business Observability Stack</title>
+      <link>https://www.soumyadsanyal.com/data/data-stack-is-business-observability-stack/</link>
+      <pubDate>Mon, 16 Oct 2023 13:58:06 -0400</pubDate>
+      
+      <guid>https://www.soumyadsanyal.com/data/data-stack-is-business-observability-stack/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
