@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data on Soumya D. Sanyal</title>
+    <link>https://www.soumyadsanyal.com/data/</link>
+    <description>Recent content in Data on Soumya D. Sanyal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Copyright © 2015-2023, Soumya D. Sanyal.</copyright>
+    <lastBuildDate>Thu, 19 Oct 2023 12:37:36 -0400</lastBuildDate><atom:link href="https://www.soumyadsanyal.com/data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Your Data Stack Is Your Business Observability Stack</title>
+      <link>https://www.soumyadsanyal.com/data/data-stack-is-business-observability-stack/</link>
+      <pubDate>Mon, 16 Oct 2023 13:58:06 -0400</pubDate>
+      
+      <guid>https://www.soumyadsanyal.com/data/data-stack-is-business-observability-stack/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
