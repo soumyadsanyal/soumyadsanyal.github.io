@@ -10,6 +10,7 @@ RUN apk update && apk upgrade && apk add \
 	zsh \
 	wget \
 	jq \
+	openssh \
 	tmux
 
 FROM development as shell
