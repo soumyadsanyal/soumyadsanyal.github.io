@@ -6,7 +6,7 @@ draft = true
 
 #### PPT: People, Processes, and Technology 
 
-In early 2021, I was tasked with building a long term plan (LTP) to govern work on Data Platform Engineering over the next 3 years.
+In early 2021, I was tasked with building a 3-year Long Term Plan (LTP) for Data Platform Engineering.
 
 While writing this LTP, I was introduced to the "People, Process, Technology" (_PPT_) framework by my COO, who I reported to at the time. 
 
@@ -21,9 +21,9 @@ I found PPT to be a useful framework for diagosing my function's: (a) current st
 
 I implemented that LTP over 2021-2023. 
 
-That real-world, hands-on, work led me to refine my understanding of PPT. I tested out specific techniques within a framework that, while doing a great job of being appropriately holistic, could well be criticized for being an excessively generic theory, to the point of being unfalsifiable.
+That real-world, hands-on, work led me to refine my understanding of PPT. I tested out specific hypotheses within a framework that, while uniquely and appropriately holistic, could well be criticized for being excessively generic, to the point of being unfalsifiable as a theory.
 
-Leavitt recognized this shortcoming of the state of organizational design clearly (_all emphases mine_).
+Leavitt clearly called out this shortcoming in the state of organizational design (_all emphases mine_).
 
 > On the positive side, however, one can put up a strong argument that there is progress in the world; that by pushing structural or human or technical buttons to see what lights up, we are beginning gropingly to understand some of the interdependencies of the several variables. 
 
@@ -33,9 +33,13 @@ Leavitt recognized this shortcoming of the state of organizational design clearl
 
 > For the present state of unaccountability provides a protective jungle that offers quick cover to the proponents of **_any_** current approach to organizational change. 
 
-In this post I write down some concrete and falsifiable hypotheses in operating model design that I considered, in the spirit of further developing Leavitt's concluding hypothesis:
+In this post I write down some of my concrete and falsifiable hypotheses in operating model design, in the spirit of further developing Leavitt's concluding hypothesis:
 
 > If I may conclude with a speculation, I will bet long odds that as [we] develop such an economics, **_as we learn to weight costs and advantages, and to predict second and third order changes_**; we will not move uniformly toward one of these approaches or another, even within the firm. **_We will move_** instead toward a melange; **_toward differentiated organizations in which the nature of changes becomes largely dependent on the nature of task_** (_sic_). We have progressed, I submit; we have not just oscillated. We have learned about people, about structure, about technology; and we will learn to use what we know about all three to change the shape of future organizations. 
+
+### Hypothesis 1: PPT requires a value function to be useful as a framework for decision making and organizational design.
+
+### Hypothesis 2: Working backwards from the value function can uniquely solve for an operating model.
 
 1. Optimize for company goals as a primary objective, and identify what valuable business problems must be solved to achieve those goals. Then and only then, work backwards to the tasks  effectiveness as a secondary objective that is derived by working backwards.
     1. The sole pursuit of effective task execution [is often not strategic](https://www.iwp.edu/wp-content/uploads/2020/08/What-Is-Strategy.pdf). 
