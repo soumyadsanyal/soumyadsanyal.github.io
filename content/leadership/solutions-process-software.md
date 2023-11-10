@@ -4,6 +4,7 @@ date = 2023-10-21T13:54:21-04:00
 draft = true
 +++
 
+<<<<<<< HEAD
 #### PPPT: Problems, People, Processes, and Technology 
 
 In early 2021, I was tasked with building a long term plan (LTP) for my function, Data Platform Engineering, to govern our work over the next 3 years.
@@ -55,3 +56,6 @@ Getting this backwards introduces a few failure modes:
 1. Premature automation means that the solution or process isn't validated to (a) be valuable, or (b) scalable in the market.
 2. Premature automation is also capital and opportunity-cost expensive, so this further adds to the risk of being "upside-down" in your resource investments.
 3. Similarly, premature process-implementation both increases the risk that the value of the solution is not validated, while also increasing investments in 
+=======
+tktktk
+>>>>>>> origin/main
