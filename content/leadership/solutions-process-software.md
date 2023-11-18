@@ -37,13 +37,27 @@ In this post I write down some of my concrete and falsifiable hypotheses in oper
 
 > If I may conclude with a speculation, I will bet long odds that as [we] develop such an economics, **_as we learn to weight costs and advantages, and to predict second and third order changes_**; we will not move uniformly toward one of these approaches or another, even within the firm. **_We will move_** instead toward a melange; **_toward differentiated organizations in which the nature of changes becomes largely dependent on the nature of task_** (_sic_). We have progressed, I submit; we have not just oscillated. We have learned about people, about structure, about technology; and we will learn to use what we know about all three to change the shape of future organizations. 
 
-### Hypothesis 1: PPT requires a value function to be useful as a framework for decision making and organizational design.
+### Hypothesis 1: PPT requires a measurable objective function to be useful as a framework for decision making and organizational design.
 
-### Hypothesis 2: Working backwards from the value function can uniquely solve for an operating model.
+1. Tells you what tasks are necessary to execute.
+2. Tells you what tasks are necessary to execute well.
+3. Tells you what tasks are sufficient to execute.
+4. Builds consensus around these.
+5. Helps with decentralized coordination and well defined interfaces, and eventually, modularization.
 
-1. Optimize for company goals as a primary objective, and identify what valuable business problems must be solved to achieve those goals. Then and only then, work backwards to the tasks  effectiveness as a secondary objective that is derived by working backwards.
+Questions of organizational design span a very large parameter space, split across people, process and technology. Each of these dimensions, even in isolation, requires clear and effective coordination and integration of their parts, as anyone managing a team, writing HR policies, or maintaining (_even worse, migrating_) a legacy codebase has realized.
+
+Clarity in the face of a sea of otherwise undifferentiated options is often achieved by understanding the goals of the organization.
+
+Optimize for company goals as a primary objective, and identify what valuable business problems must be solved to achieve those goals. Then and only then, work backwards to the tasks  effectiveness as a secondary objective that is derived by working backwards.
     1. The sole pursuit of effective task execution [is often not strategic](https://www.iwp.edu/wp-content/uploads/2020/08/What-Is-Strategy.pdf). 
     2. This shift in framing creates room for you to consider whether some tasks should simply not, or at least no longer, be done.
+
+
+### Hypothesis 2: Working backwards from the objective function can simplify the search for an operating model.
+
+1. 
+
 2. Having identified a portfolio of tasks worth solving for, grade your people, process and technology dimensions, based on the maturity of the solution in place.
     1. Where solution discovery and iteration (_before product-market fit_), focus your resourcing and attention on people. Minimize process and technology overhead. (_Use: whiteboard diagrams, happy-path scripts._)
     2. If and when a solution is discovered, and is both valuable and stable over time (_at the point of product-market fit_), focus on standardizing and scaling its implementation across people and time by adding process. (_Use: runbooks, instruction manuals._)
