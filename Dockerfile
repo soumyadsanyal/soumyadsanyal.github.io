@@ -6,6 +6,7 @@ RUN apk update && apk upgrade && apk add \
 	python3 \
 	aws-cli \
 	vim \
+	make \
 	curl \
 	make \
 	zsh \
