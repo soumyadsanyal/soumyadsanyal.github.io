@@ -7,6 +7,7 @@ RUN apk update && apk upgrade && apk add \
 	aws-cli \
 	vim \
 	curl \
+	make \
 	zsh \
 	wget \
 	jq \
