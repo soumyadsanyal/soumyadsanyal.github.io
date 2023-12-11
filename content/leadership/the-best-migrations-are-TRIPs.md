@@ -5,15 +5,40 @@ date = 2023-10-18T12:45:22-04:00
 
 ### The Best Migrations Are TRIPs
 
+#### Introduction
+
 In 2022, I, with my team, delivered -- on-time and in-full -- a data platform migration. We migrated from an in-house, custom-built, legacy ETL stack to what had become a standard architecture for batch data processing: Fivetran, dbt, and Airflow. 
 
 However, I've also observed many such migrations fail. Such is the fate of the overwhelming majority of migrations, at the overwhelming majority of organizations. And, the resulting partial or failed migrations continue to bleed resourcing, morale and focus on an engineering team.
 
-### What makes migrations hard?
+#### What makes migrations hard?
 
-Systems that are worth migrating at all tend to be heavily relied on by an organization. This means they are business-critical, and the business costs of system downtime, time not spent on shipping other features, and the risk to dependent functions, are high.
+Systems that are worth migrating have the following features:
 
-Because these systems have been valuable and entrenched, they also tend to be old. 
+1. Are valuable. 
+	1. They support valuable business operations. 
+	2. In fact, entire value streams may depend critically on these systems running.
+2. Have many downstream users and dependencies.
+	1. They support many people, teams and functions.
+3. May have many upstream dependencies.
+	1. They have established deep integrations with your operational workflows (_and their undocumented assumptions_).
+4. Are old.
+	1. Most systems are spiffy, modern and relevant when first implemented. 
+	2. But over time, they fall behind newer technologies. 
+	3. This correlates with a set of common risks as the world moves on:
+		1. The system is feature-behind (_and therefore your business is operationally-stagnant_).
+		2. The system is hard to hire operators for. This drives common single-point-of-failure (_or zero-point-of-failure_) risks.
+	3. By the time a migration is in scope, the motivated to migrate systems to achieve a more modern feature set, better technology, migrations are motivated 
+
+Problems:
+
+1. High value makes migrations risky. The risk of an implementation error to the business is high. Other teams may not be able to do their jobs if the migration goes awry.
+2. Many other teams may be blocked if the migration goes awry.
+3. 
+
+Systems that are worth migrating at all tend to be heavily relied on by an organization. This means that: (a) they support operationally valuable workstreams, (b) This means they support business-critical operations, and the business costs of (a) system (_and client_) downtime and (b) developer time not spent on shipping product features are high.
+
+Because they are operationally valuable and , they also tend to be old. 
 
 Because they are relied on by many users, they tend to have developed critical, manifold, and complex dependencies.
 
