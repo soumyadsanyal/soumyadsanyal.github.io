@@ -9,7 +9,7 @@ theme = 'hugo-bearblog'
 # title = "Hugo ʕ•ᴥ•ʔ Bear Blog"
 title = "Soumya D. Sanyal"
 author = "Soumya D. Sanyal"
-copyright = "Copyright © 2015-2023, Soumya D. Sanyal."
+copyright = "Copyright © 2015-2025, Soumya D. Sanyal."
 languageCode = "en-US"
 
 # Generate a nice robots.txt for SEO
