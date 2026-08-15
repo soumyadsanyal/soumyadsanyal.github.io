@@ -6,7 +6,7 @@ date = 2023-10-19T03:09:09Z
 
 ## Who 
 
-Hi, I'm Soumya (_SOH-mee-uh_), an engineering and data leader.
+Hi, I'm [Soumya](https://hearmyname.net/say/bn-in/Soumya), an engineering and data leader.
 
 ![alt text](/images/soumya_mug.jpg)
 

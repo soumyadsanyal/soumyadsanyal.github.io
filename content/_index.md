@@ -1,6 +1,6 @@
 # Introduction
 
-I'm Soumya, an engineering and data leader.
+I'm [Soumya](https://hearmyname.net/say/bn-in/Soumya), an engineering and data leader.
 
 ![alt text](images/soumya_mug.jpg)
 
