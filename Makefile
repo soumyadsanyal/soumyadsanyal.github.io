@@ -10,7 +10,7 @@ docker_run:
         -p 1313:1313 \
         hugosite
 
-make serve:
+serve:
 	hugo -D --bind="0.0.0.0" server &D
 
 docker_clean:
